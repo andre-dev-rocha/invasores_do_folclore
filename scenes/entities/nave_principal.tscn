@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://cpri2wptecpwe"]
+
+[ext_resource type="Script" uid="uid://dx36rycnr2cau" path="res://Cenas/Player/nave_principal.gd" id="1_mwwx3"]
+[ext_resource type="Texture2D" uid="uid://d07wrhbi054sk" path="res://Main Ship - Base - Full health.png" id="2_hrxlg"]
+[ext_resource type="Texture2D" uid="uid://c4ghuhqhbg4ed" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Burst Engine - Idle.png" id="2_u6ftr"]
+[ext_resource type="PackedScene" uid="uid://3eyjgsev0wl5" path="res://Cenas/Cenario/cenario_espacial.tscn" id="4_u6ftr"]
+[ext_resource type="PackedScene" uid="uid://xejtfpp1asen" path="res://Cenas/Cenario/planeta_terra.tscn" id="5_8mgmc"]
+[ext_resource type="PackedScene" uid="uid://dnld7fyi0kl2a" path="res://Cenas/Inimigos/saci.tscn" id="6_8oaem"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mgmc"]
+atlas = ExtResource("2_u6ftr")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oaem"]
+atlas = ExtResource("2_u6ftr")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_il1dv"]
+atlas = ExtResource("2_u6ftr")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0k0p"]
+atlas = ExtResource("2_u6ftr")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxd55"]
+atlas = ExtResource("2_u6ftr")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjiie"]
+atlas = ExtResource("2_u6ftr")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lirk1"]
+atlas = ExtResource("2_u6ftr")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aocun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mgmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oaem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_il1dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0k0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxd55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjiie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lirk1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6ftr"]
+size = Vector2(30, 26)
+
+[node name="NavePrincipal" type="CharacterBody2D" unique_id=2134389782]
+position = Vector2(17, 215)
+script = ExtResource("1_mwwx3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=94373891]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1154360322]
+position = Vector2(1, 16)
+sprite_frames = SubResource("SpriteFrames_aocun")
+autoplay = "default"
+frame_progress = 0.732969
+
+[node name="MainShipBaseFullHealth" type="Sprite2D" parent="." unique_id=209112864]
+position = Vector2(1, 6)
+texture = ExtResource("2_hrxlg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1311075128]
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_u6ftr")
+
+[node name="CenarioEspacial" parent="." unique_id=372460299 instance=ExtResource("4_u6ftr")]
+
+[node name="planeta_terra" parent="." unique_id=324576896 instance=ExtResource("5_8mgmc")]
+
+[node name="Saci" parent="." unique_id=486101540 instance=ExtResource("6_8oaem")]
+position = Vector2(134, -185)
