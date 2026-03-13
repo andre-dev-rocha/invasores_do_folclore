@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dgjnlwkvka8n5"]
+
+[ext_resource type="Script" uid="uid://mu4qk8oyhyrj" path="res://scripts/hud.gd" id="1_8c73q"]
+[ext_resource type="Texture2D" uid="uid://bnv1b18pmdefh" path="res://assets/ui/fundo_barra_escudo.png" id="2_eoyyo"]
+[ext_resource type="Texture2D" uid="uid://dvvd7c0ynl4ki" path="res://assets/sprites/player/player.png" id="2_krag1"]
+[ext_resource type="Texture2D" uid="uid://fdsveph2u77y" path="res://assets/ui/barra_cheia_escudo.png" id="3_krag1"]
+[ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="3_tvg2b"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1901915659]
+script = ExtResource("1_8c73q")
+
+[node name="ContainerVidas" type="HBoxContainer" parent="." unique_id=661824518]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -296.0
+offset_top = 16.0
+offset_right = 1063.9995
+offset_bottom = 460.0
+grow_horizontal = 0
+scale = Vector2(0.15, 0.15)
+theme_override_constants/separation = 150
+
+[node name="TextureRect" type="TextureRect" parent="ContainerVidas" unique_id=2066453183]
+layout_mode = 2
+texture = ExtResource("2_krag1")
+
+[node name="TextureRect2" type="TextureRect" parent="ContainerVidas" unique_id=1784974332]
+layout_mode = 2
+texture = ExtResource("2_krag1")
+
+[node name="TextureRect3" type="TextureRect" parent="ContainerVidas" unique_id=1230685843]
+layout_mode = 2
+texture = ExtResource("2_krag1")
+
+[node name="LabelPontos" type="Label" parent="." unique_id=1023186690]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.5
+offset_right = 49.5
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_tvg2b")
+theme_override_font_sizes/font_size = 20
+text = "Pontos: 0000"
+
+[node name="LabelOnda" type="Label" parent="." unique_id=498847253]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -71.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_tvg2b")
+theme_override_font_sizes/font_size = 20
+text = "Onda 1/5"
+
+[node name="BarraEscudo" type="TextureProgressBar" parent="." unique_id=690667288]
+offset_right = 203.0
+offset_bottom = 50.0
+texture_under = ExtResource("2_eoyyo")
+texture_progress = ExtResource("3_krag1")
