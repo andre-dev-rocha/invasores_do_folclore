@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://dgni7ubay2bl7"]
+
+[ext_resource type="Theme" uid="uid://c2j8udc8wavvt" path="res://assets/fonts/menu_theme.tres" id="1_1rre7"]
+[ext_resource type="Script" uid="uid://boftk4g4cyp0d" path="res://scripts/menu_principal.gd" id="1_4phj4"]
+[ext_resource type="Texture2D" uid="uid://c1e42fjlby0im" path="res://assets/backgrounds/menu_background_2.png" id="2_04jn1"]
+[ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="3_17qn8"]
+[ext_resource type="AudioStream" uid="uid://cy7xnak5onejt" path="res://assets/audio/music/track 1.ogg" id="5_3exxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4phj4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpfh7"]
+bg_color = Color(0.22352941, 1, 0.078431375, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04jn1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28ct2"]
+bg_color = Color(0.22352941, 1, 0.078431375, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17qn8"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wnad"]
+bg_color = Color(0.22352941, 1, 0.078431375, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rre7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41rpb"]
+bg_color = Color(0.22352941, 1, 0.078431375, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db5vs"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.39215687)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3les0"]
+bg_color = Color(0.22352941, 1, 0.078431375, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="MenuPrincipal" type="Control" unique_id=474491061]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1rre7")
+script = ExtResource("1_4phj4")
+
+[node name="Fundo" type="TextureRect" parent="." unique_id=953768444]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 720.0
+texture = ExtResource("2_04jn1")
+expand_mode = 1
+
+[node name="Opcoes" type="VBoxContainer" parent="." unique_id=1934960542]
+layout_mode = 0
+offset_left = 312.0
+offset_top = 321.0
+offset_right = 656.0
+offset_bottom = 520.0
+theme_override_constants/separation = 10
+
+[node name="BotaoJogar" type="Button" parent="Opcoes" unique_id=719023515]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_17qn8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_4phj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cpfh7")
+text = "Jogar
+"
+
+[node name="BotaoOpcoes" type="Button" parent="Opcoes" unique_id=1671803796]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_17qn8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_04jn1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28ct2")
+text = "Opções
+
+"
+
+[node name="BotaoCreditos" type="Button" parent="Opcoes" unique_id=353849675]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_17qn8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_17qn8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0wnad")
+text = "Créditos
+
+"
+
+[node name="BotaoSair" type="Button" parent="Opcoes" unique_id=1202118778]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+theme_override_fonts/font = ExtResource("3_17qn8")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_1rre7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_41rpb")
+text = "Sair
+
+"
+
+[node name="OpcoesPanel" type="Panel" parent="." unique_id=671606765]
+layout_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OpcoesPanel" unique_id=1086155119]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 233.0
+offset_top = 313.0
+offset_right = 737.0
+offset_bottom = 517.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Musica" type="Label" parent="OpcoesPanel/VBoxContainer" unique_id=989194667]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Volume da Música"
+
+[node name="SliderMusica" type="HSlider" parent="OpcoesPanel/VBoxContainer" unique_id=1263669990]
+layout_mode = 2
+size_flags_vertical = 2
+value = 50.0
+
+[node name="Efeitos" type="Label" parent="OpcoesPanel/VBoxContainer" unique_id=658173293]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "Volume dos Efeitos"
+
+[node name="SliderEfeitos" type="HSlider" parent="OpcoesPanel/VBoxContainer" unique_id=301506398]
+layout_mode = 2
+size_flags_vertical = 2
+value = 50.0
+
+[node name="BotaoVoltarOpcoes" type="Button" parent="OpcoesPanel/VBoxContainer" unique_id=97150243]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_db5vs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3les0")
+text = "Voltar"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=218661912]
+stream = ExtResource("5_3exxb")
+autoplay = true
+bus = &"Music"
+parameters/looping = true
