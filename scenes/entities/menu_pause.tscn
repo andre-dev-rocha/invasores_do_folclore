@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d3mfvfnon3a0k"]
+
+[ext_resource type="Script" uid="uid://b0mhowlnyf28t" path="res://scripts/menu_pause.gd" id="1_tw2mh"]
+
+[node name="MenuPause" type="CanvasLayer" unique_id=875262544]
+process_mode = 3
+script = ExtResource("1_tw2mh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=366500930]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="PainelCentral" type="VBoxContainer" parent="." unique_id=1470770436]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelTitulo" type="Label" parent="PainelCentral" unique_id=890467626]
+layout_mode = 2
+text = "Pause"
+
+[node name="BotaoContinuar" type="Button" parent="PainelCentral" unique_id=1563953398]
+layout_mode = 2
+
+[node name="PainelOpcoes" type="Panel" parent="PainelCentral" unique_id=1926770298]
+layout_mode = 2
+
+[node name="Opcoes" type="VBoxContainer" parent="PainelCentral/PainelOpcoes" unique_id=1940338972]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelMusica" type="Label" parent="PainelCentral/PainelOpcoes/Opcoes" unique_id=1975868133]
+layout_mode = 2
+
+[node name="SliderMusica" type="HSlider" parent="PainelCentral/PainelOpcoes/Opcoes" unique_id=1116687752]
+layout_mode = 2
+
+[node name="LabelSFX" type="Label" parent="PainelCentral/PainelOpcoes/Opcoes" unique_id=2022172156]
+layout_mode = 2
+
+[node name="SliderSFX" type="HSlider" parent="PainelCentral/PainelOpcoes/Opcoes" unique_id=2051576349]
+layout_mode = 2
+
+[node name="BotaoMenu" type="Button" parent="PainelCentral" unique_id=153003817]
+layout_mode = 2

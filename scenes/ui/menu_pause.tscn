@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://b3tebgvojdktk"]
+
+[ext_resource type="Script" uid="uid://b0mhowlnyf28t" path="res://scripts/menu_pause.gd" id="1_xk2s2"]
+
+[node name="MenuPause" type="CanvasLayer" unique_id=1974877219]
+process_mode = 3
+script = ExtResource("1_xk2s2")
+
+[node name="FundoEscuro" type="ColorRect" parent="." unique_id=294465666]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="MenuPrincipal" type="VBoxContainer" parent="." unique_id=375273704]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titulo" type="Label" parent="MenuPrincipal" unique_id=643779026]
+layout_mode = 2
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="BtnContinuar" type="Button" parent="MenuPrincipal" unique_id=969043739]
+layout_mode = 2
+text = "Continuar
+"
+
+[node name="BtnOpcoes" type="Button" parent="MenuPrincipal" unique_id=1078292334]
+layout_mode = 2
+text = "Opções"
+
+[node name="BtnSair" type="Button" parent="MenuPrincipal" unique_id=1825989531]
+layout_mode = 2
+text = "Menu
+"
+
+[node name="MenuOpcoes" type="PanelContainer" parent="." unique_id=409204509]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuOpcoes" unique_id=1987069129]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="MenuOpcoes/MarginContainer" unique_id=595349746]
+layout_mode = 2
+
+[node name="LabelMusica" type="Label" parent="MenuOpcoes/MarginContainer/VBox" unique_id=765543559]
+layout_mode = 2
+text = "Volume da Música"
+
+[node name="SliderMusica" type="HSlider" parent="MenuOpcoes/MarginContainer/VBox" unique_id=1320928875]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="LabelSFX" type="Label" parent="MenuOpcoes/MarginContainer/VBox" unique_id=888518121]
+layout_mode = 2
+text = "Volume dos Efeitos"
+
+[node name="SliderSFX" type="HSlider" parent="MenuOpcoes/MarginContainer/VBox" unique_id=2051319694]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="BtnVoltar" type="Button" parent="MenuOpcoes/MarginContainer/VBox" unique_id=1114508123]
+layout_mode = 2
+text = "Voltar"
+
+[node name="MenuConfirmacao" type="PanelContainer" parent="." unique_id=1516866484]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -46.5
+offset_right = 88.0
+offset_bottom = 46.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuConfirmacao" unique_id=464264981]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="MenuConfirmacao/MarginContainer" unique_id=1409745061]
+layout_mode = 2
+
+[node name="LabelPergunta" type="Label" parent="MenuConfirmacao/MarginContainer/VBox" unique_id=6503998]
+layout_mode = 2
+text = "Deseja realmente sair?"
+
+[node name="BtnSim" type="Button" parent="MenuConfirmacao/MarginContainer/VBox" unique_id=1198255592]
+layout_mode = 2
+text = "Sim"
+
+[node name="BtnNao" type="Button" parent="MenuConfirmacao/MarginContainer/VBox" unique_id=737046335]
+layout_mode = 2
+text = "Não"
+
+[connection signal="pressed" from="MenuPrincipal/BtnContinuar" to="." method="_on_btn_continuar_pressed"]
+[connection signal="pressed" from="MenuPrincipal/BtnOpcoes" to="." method="_on_btn_opcoes_pressed"]
+[connection signal="pressed" from="MenuPrincipal/BtnSair" to="." method="_on_btn_sair_pressed"]
+[connection signal="value_changed" from="MenuOpcoes/MarginContainer/VBox/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="value_changed" from="MenuOpcoes/MarginContainer/VBox/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="pressed" from="MenuOpcoes/MarginContainer/VBox/BtnVoltar" to="." method="_on_btn_voltar_pressed"]
+[connection signal="pressed" from="MenuConfirmacao/MarginContainer/VBox/BtnSim" to="." method="_on_btn_sim_pressed"]
+[connection signal="pressed" from="MenuConfirmacao/MarginContainer/VBox/BtnNao" to="." method="_on_btn_nao_pressed"]
