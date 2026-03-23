@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://3eyjgsev0wl5"]
+
+[ext_resource type="Script" uid="uid://cnh1xik3c1ls1" path="res://cenario_espacial.gd" id="1_r0gs4"]
+[ext_resource type="Texture2D" uid="uid://4dg50nv2ui7n" path="res://Starry background  - Layer 01 - Solid colour.png" id="2_g45jq"]
+[ext_resource type="Texture2D" uid="uid://di3gnvidwechs" path="res://Starry background  - Layer 02 - Shadows.png" id="3_sxru1"]
+[ext_resource type="Texture2D" uid="uid://cbbk2dwcdcgc6" path="res://Starry background  - Layer 03 - Stars.png" id="4_pif3e"]
+
+[node name="CenarioEspacial" type="ParallaxBackground" unique_id=372460299]
+script = ExtResource("1_r0gs4")
+
+[node name="Fundo_Solido_01" type="ParallaxLayer" parent="." unique_id=1313866428]
+
+[node name="Sprite2D" type="Sprite2D" parent="Fundo_Solido_01" unique_id=836803829]
+scale = Vector2(1.0000001, 2)
+texture = ExtResource("2_g45jq")
+centered = false
+
+[node name="Sombras_02" type="ParallaxLayer" parent="." unique_id=1515911574]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(0, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sombras_02" unique_id=1843971492]
+scale = Vector2(1, 1.9999999)
+texture = ExtResource("3_sxru1")
+centered = false
+
+[node name="Estrelas_03" type="ParallaxLayer" parent="." unique_id=1041893116]
+motion_scale = Vector2(0.8, 0.8)
+motion_mirroring = Vector2(0, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="Estrelas_03" unique_id=796802342]
+position = Vector2(1, 0)
+scale = Vector2(0.9998264, 2)
+texture = ExtResource("4_pif3e")
+centered = false
