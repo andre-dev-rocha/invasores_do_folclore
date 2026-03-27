@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b74hx03d34518"
+path="res://.godot/imported/track 11.ogg-d94c4e9f2a16936b09c35c14945a5e6d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/track 11.ogg"
+dest_files=["res://.godot/imported/track 11.ogg-d94c4e9f2a16936b09c35c14945a5e6d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
