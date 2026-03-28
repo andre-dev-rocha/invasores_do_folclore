@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bb0tx21qxc6sb"]
+
+[ext_resource type="Script" uid="uid://nuuhnmnfn3bg" path="res://scripts/intro_cordel.gd" id="1_uypha"]
+[ext_resource type="Texture2D" uid="uid://dqejs7rvkm7gc" path="res://assets/backgrounds/pagina_1_cordel.png" id="2_uypha"]
+
+[node name="IntroCordel" type="Control" unique_id=1603985737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uypha")
+
+[node name="BackgroundLivro" type="TextureRect" parent="." unique_id=317566976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uypha")
+expand_mode = 1
+
+[node name="BotaoProximo" type="Button" parent="." unique_id=898713352]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 565.0
+offset_right = 879.0
+offset_bottom = 603.0
+text = "Próxima Página"
+
+[node name="BotaoAnterior" type="Button" parent="." unique_id=248084261]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 565.0
+offset_right = 229.0
+offset_bottom = 603.0
+text = "Anterior
+"
