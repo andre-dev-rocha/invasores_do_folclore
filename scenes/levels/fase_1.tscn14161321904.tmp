@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bltq4sss6tsf7"]
+
+[ext_resource type="Script" uid="uid://bvhi17htosrik" path="res://scripts/fase_1.gd" id="1_u1f2d"]
+[ext_resource type="PackedScene" uid="uid://diyrwwgfb503f" path="res://scenes/entities/player.tscn" id="2_5kpeh"]
+
+[node name="Fase1" type="Node2D" unique_id=171737375]
+script = ExtResource("1_u1f2d")
+
+[node name="Gameplay" type="Node2D" parent="." unique_id=2095428379]
+
+[node name="Player" parent="Gameplay" unique_id=563846828 instance=ExtResource("2_5kpeh")]
+position = Vector2(365, 652)
+velocidade = 600.0
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1170051157]
+
+[node name="TextoFase" type="Label" parent="UI" unique_id=589313662]
+offset_left = 978.0
+offset_top = 249.0
+offset_right = 1537.0
+offset_bottom = 392.0
+theme_override_font_sizes/font_size = 32
+text = "Fase 1: O ataque do Saci"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CaixaDialogo" type="Panel" parent="UI" unique_id=977513934]
+offset_left = 38.0
+offset_top = 502.0
+offset_right = 934.0
+offset_bottom = 697.0
+
+[node name="RetratoJogador" type="TextureRect" parent="UI/CaixaDialogo" unique_id=991645572]
+layout_mode = 0
+offset_left = -104.0
+offset_top = -209.0
+offset_right = 194.0
+offset_bottom = -1.0
+expand_mode = 1
+
+[node name="NomePersonagem" type="Label" parent="UI/CaixaDialogo" unique_id=1093569348]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 27.0
+
+[node name="TextoFala" type="Label" parent="UI/CaixaDialogo" unique_id=985682164]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 40.0
+offset_right = 878.0
+offset_bottom = 180.0
+autowrap_mode = 2
+
+[node name="AvisoEspaco" type="Label" parent="UI/CaixaDialogo" unique_id=295012174]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 161.0
+offset_right = 889.0
+offset_bottom = 210.0
+text = "Pular (Espaço)
+"
+
+[node name="RetratoInimigo" type="TextureRect" parent="UI/CaixaDialogo" unique_id=903139219]
+layout_mode = 0
+offset_left = 583.0
+offset_top = -189.0
+offset_right = 980.0
+offset_bottom = 88.0
+expand_mode = 1

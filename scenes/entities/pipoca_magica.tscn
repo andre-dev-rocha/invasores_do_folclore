@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cmnewfqu6h84x"]
+
+[ext_resource type="Script" uid="uid://cqhdcdn0o3gyx" path="res://scripts/pipoca_magica.gd" id="1_u0p02"]
+[ext_resource type="Texture2D" uid="uid://dfofddyc2f1se" path="res://assets/sprites/enemies/pipoca_magica_sprite.png" id="2_4chm3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38s3b"]
+radius = 32.280025
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t51t2"]
+atlas = ExtResource("2_4chm3")
+region = Rect2(525, 0, 505, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cb4uo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t51t2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PipocaMagica" type="Area2D" unique_id=1511101660 groups=["projetil_inimigo"]]
+z_index = 11
+scale = Vector2(0.2, 0.2)
+collision_layer = 8
+script = ExtResource("1_u0p02")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1686989908]
+position = Vector2(-5, 20)
+shape = SubResource("CircleShape2D_38s3b")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1330103969]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1711990662]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_cb4uo")
+autoplay = "default"
+frame_progress = 0.6188119
