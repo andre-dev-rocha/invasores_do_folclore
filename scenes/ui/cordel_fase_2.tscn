@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://d11xwjrd2sr2h"]
+
+[ext_resource type="Script" uid="uid://bfkxmaf4vpor5" path="res://scripts/cordel_fase_2.gd" id="1_ldfxu"]
+[ext_resource type="Texture2D" uid="uid://ct16p5wn820ov" path="res://assets/backgrounds/pagina_1_cordel_2.png" id="2_l7vl3"]
+[ext_resource type="AudioStream" uid="uid://c1lmgku70sce5" path="res://assets/audio/music/track 5.ogg" id="3_d87es"]
+
+[node name="CordelFase2" type="Control" unique_id=1603985737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ldfxu")
+
+[node name="BackgroundLivro" type="TextureRect" parent="." unique_id=317566976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l7vl3")
+expand_mode = 1
+
+[node name="BotaoProximo" type="Button" parent="." unique_id=898713352]
+layout_mode = 0
+offset_left = 723.0
+offset_top = 565.0
+offset_right = 879.0
+offset_bottom = 603.0
+text = "Próxima Página"
+
+[node name="BotaoAnterior" type="Button" parent="." unique_id=248084261]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 565.0
+offset_right = 229.0
+offset_bottom = 603.0
+text = "Anterior
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=755527863]
+stream = ExtResource("3_d87es")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

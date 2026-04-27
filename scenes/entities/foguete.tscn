@@ -37,6 +37,8 @@ size = Vector2(7, 17)
 
 [node name="Foguete" type="Area2D" unique_id=1316797508 groups=["laser_player"]]
 z_index = 5
+collision_layer = 9
+collision_mask = 2
 script = ExtResource("1_eawcl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=570581535]

@@ -1,5 +1,5 @@
 extends Area2D
-
+@onready var som_tiro = $SomTiro
 # Configurações de Movimento (GDD 2.1 - Saci)
 @export_group("Movimento Infinito")
 @export var valor_pontos: int = 100 # Cada Saci vale 100 pontos
@@ -7,6 +7,8 @@ extends Area2D
 @export var amplitude_horizontal: float = 90.0 # Largura do símbolo infinito
 @export var amplitude_vertical_laco: float = 60.0 # Altura dos laços do "8"
 @export var frequencia: float = 2.5   # Velocidade da execução do desenho
+
+
 
 var tempo_decorrido: float = 0.0
 var x_inicial: float = 0.0
@@ -16,6 +18,7 @@ var y_base: float = 0.0 # Ponto de referência para a descida
 var cena_pipoca = preload("res://scenes/entities/pipoca_magica.tscn")
 var cena_explosao = preload("res://scenes/entities/explosao.tscn")
 var cena_ponto = preload("res://scenes/entities/ponto_flutuante.tscn")
+
 func _ready():
 	x_inicial = global_position.x
 	y_base = global_position.y
@@ -48,7 +51,10 @@ func _process(delta):
 func atirar_pipoca():
 	# 1. Cria uma instância da pipoca
 	var pipoca = cena_pipoca.instantiate()
-	
+	if is_instance_valid(som_tiro):
+			som_tiro.play()
+	else:
+		print("AVISO: Nó de som não encontrado, mas o jogo continua!")
 	# 2. Define a posição inicial (onde o Saci está agora)
 	pipoca.global_position = global_position
 	

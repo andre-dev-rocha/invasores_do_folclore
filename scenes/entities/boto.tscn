@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://c4qub6ahmato2"]
+
+[ext_resource type="Script" uid="uid://jo3naycccvox" path="res://scripts/boto.gd" id="1_aayyv"]
+[ext_resource type="Texture2D" uid="uid://b2seqvqfxvojo" path="res://assets/sprites/enemies/sprite_boto_definiva_3.png" id="2_sko36"]
+[ext_resource type="AudioStream" uid="uid://bafcnwnttab3t" path="res://assets/audio/sfx/escudo_som.wav" id="2_tpixw"]
+[ext_resource type="AudioStream" uid="uid://sk1w8fb2487e" path="res://assets/audio/sfx/saci_disparo.mp3" id="3_sko36"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sko36"]
+radius = 101.07918
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snqpp"]
+atlas = ExtResource("2_sko36")
+region = Rect2(892, 872, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nem7o"]
+atlas = ExtResource("2_sko36")
+region = Rect2(892, 436, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrx41"]
+atlas = ExtResource("2_sko36")
+region = Rect2(1338, 436, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak23s"]
+atlas = ExtResource("2_sko36")
+region = Rect2(1784, 436, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp3yi"]
+atlas = ExtResource("2_sko36")
+region = Rect2(0, 872, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1o8r"]
+atlas = ExtResource("2_sko36")
+region = Rect2(446, 872, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcm4m"]
+atlas = ExtResource("2_sko36")
+region = Rect2(892, 872, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6qdi"]
+atlas = ExtResource("2_sko36")
+region = Rect2(1338, 872, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64g5m"]
+atlas = ExtResource("2_sko36")
+region = Rect2(1784, 872, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wolin"]
+atlas = ExtResource("2_sko36")
+region = Rect2(0, 1308, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sqoa"]
+atlas = ExtResource("2_sko36")
+region = Rect2(446, 1308, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_focww"]
+atlas = ExtResource("2_sko36")
+region = Rect2(892, 1308, 446, 436)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a2vv"]
+atlas = ExtResource("2_sko36")
+region = Rect2(1338, 1308, 446, 436)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sko36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snqpp")
+}],
+"loop": false,
+"name": &"atacar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nem7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrx41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak23s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp3yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1o8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcm4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6qdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64g5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wolin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sqoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_focww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a2vv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Boto" type="Area2D" unique_id=1326341344]
+scale = Vector2(0.7, 0.7)
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_aayyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=191356751]
+position = Vector2(-18, 13)
+shape = SubResource("CircleShape2D_sko36")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1030806305]
+rect = Rect2(-500, -10, 1000, 20)
+
+[node name="TimerGranada" type="Timer" parent="." unique_id=619053573]
+unique_name_in_owner = true
+wait_time = 2.3
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2003748872]
+position = Vector2(-3, 4)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_sko36")
+animation = &"atacar"
+autoplay = "default"
+
+[node name="SomNado" type="AudioStreamPlayer2D" parent="." unique_id=759779658]
+stream = ExtResource("2_tpixw")
+
+[node name="SomTiro" type="AudioStreamPlayer2D" parent="." unique_id=1106625805]
+stream = ExtResource("3_sko36")
+bus = &"SFX"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://cesy0aswmfiro"]
+
+[ext_resource type="Script" uid="uid://bu6vg8f4jaac4" path="res://scripts/game_over.gd" id="1_fu4wh"]
+[ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="2_vfrx6"]
+[ext_resource type="AudioStream" uid="uid://b1qoho4mjtmxm" path="res://assets/audio/sfx/gameoversound1.wav" id="2_x6o8e"]
+
+[sub_resource type="Animation" id="Animation_x6o8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vfrx6"]
+resource_name = "piscar"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6b8n"]
+_data = {
+&"RESET": SubResource("Animation_x6o8e"),
+&"piscar": SubResource("Animation_vfrx6")
+}
+
+[node name="GameOver" type="CanvasLayer" unique_id=1292071311]
+process_mode = 3
+script = ExtResource("1_fu4wh")
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=1920988092]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=401369682]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxMenuPrincipal" type="VBoxContainer" parent="Centro" unique_id=52200736]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="Centro/VBoxMenuPrincipal" unique_id=1775314863]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vfrx6")
+theme_override_font_sizes/font_size = 50
+text = "FIM DE JOGO"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Centro/VBoxMenuPrincipal/Titulo" unique_id=1114047735]
+libraries/ = SubResource("AnimationLibrary_o6b8n")
+autoplay = &"piscar"
+
+[node name="BtnTentarNovamente" type="Button" parent="Centro/VBoxMenuPrincipal" unique_id=1527616291]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Tentar Novamente"
+
+[node name="BtnMenu" type="Button" parent="Centro/VBoxMenuPrincipal" unique_id=1833837285]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Menu Principal
+"
+
+[node name="VBoxConfirmacao" type="VBoxContainer" parent="Centro" unique_id=605703343]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="LabelPergunta" type="Label" parent="Centro/VBoxConfirmacao" unique_id=788430171]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Deseja realmente sair?"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Centro/VBoxConfirmacao" unique_id=281932515]
+layout_mode = 2
+
+[node name="BtnSim" type="Button" parent="Centro/VBoxConfirmacao/VBoxContainer" unique_id=1499536674]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Sim"
+
+[node name="BtnNao" type="Button" parent="Centro/VBoxConfirmacao/VBoxContainer" unique_id=1532536764]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Não"
+
+[node name="SomGameOver" type="AudioStreamPlayer" parent="." unique_id=248417541]
+stream = ExtResource("2_x6o8e")
+bus = &"SFX"
+
+[connection signal="pressed" from="Centro/VBoxMenuPrincipal/BtnTentarNovamente" to="." method="_on_btn_tentar_novamente_pressed"]
+[connection signal="pressed" from="Centro/VBoxMenuPrincipal/BtnMenu" to="." method="_on_btn_menu_principal_pressed"]
+[connection signal="pressed" from="Centro/VBoxConfirmacao/VBoxContainer/BtnSim" to="." method="_on_btn_sim_pressed"]
+[connection signal="pressed" from="Centro/VBoxConfirmacao/VBoxContainer/BtnNao" to="." method="_on_btn_nao_pressed"]
