@@ -1,7 +1,8 @@
 extends Node2D
-class_name Fase1
-static var pular_intro_proxima_vez: bool = false
+class_name Fase2
+static var pular_intro_fase2: bool = false
 var cena_game_over = preload("res://scenes/ui/game_over.tscn")
+var cena_vitoria = preload("res://scenes/ui/vitoria.tscn")
 @export var total_ondas: int = 5
 
 var game_over_iniciado: bool = false
@@ -23,23 +24,33 @@ var inimigos_spawnados_na_onda: int = 0
 @onready var retrato_inimigo = $UI/CaixaDialogo/RetratoInimigo
 @onready var musica_fase = $MusicaFase
 
-var cena_saci = preload("res://scenes/entities/saci.tscn")
+var cena_boto = preload("res://scenes/entities/boto.tscn")
 var estado_fase = "ANIMACAO_TEXTO" 
 
 var dialogos = [
 	{
 		"nome": "Capitão Zé Galáxia", 
-		"texto": "Base Canudos, cheguei na órbita. Mas o que é isso... um moleque de uma perna só atirando pipoca?",
+		"texto": "Apareça, malandro das águas! Meus sensores detectam um rastro de... perfume e energia rosa?",
 		"imagem": preload("res://assets/sprites/player/retrato_ze.png")
 	},
 	{
-		"nome": "Saci Alienígena", 
-		"texto": "Krrk... Zzt... O folclore de vocês será a sua ruína, terráqueo!",
-		"imagem": preload("res://assets/sprites/enemies/retrato_saci.png")
+		"nome": "Boto-Cor-De-Rosa", 
+		"texto": "Ora, Capitão, por que tanta pressa? Venha dançar nesta nebulosa, a festa está apenas começando!",
+		"imagem": preload("res://assets/sprites/enemies/retrato_boto.png")
 	},
 	{
 		"nome": "Capitão Zé Galáxia", 
-		"texto": "Vai ter que pular muito para desviar dos meus foguetes. Preparar para o combate!",
+		"texto": "Já conheço sua fama, Boto. Você encanta para depois roubar a energia da nave. Não cairei no seu papo!",
+		"imagem": preload("res://assets/sprites/player/retrato_ze.png")
+	},
+	{
+		"nome": "Boto-Cor-De-Rosa", 
+		"texto": "Que rude! Se não quer dançar, então prepare-se para o mergulho... nas profundezas do esquecimento!",
+		"imagem": preload("res://assets/sprites/enemies/retrato_boto.png")
+	},
+	{
+		"nome": "Capitão Zé Galáxia", 
+		"texto": "Minhas turbinas estão prontas. Vamos ver se você é tão bom de mira quanto é de conversa!",
 		"imagem": preload("res://assets/sprites/player/retrato_ze.png")
 	}
 ]
@@ -58,8 +69,8 @@ func _ready():
 	timer_spawn.timeout.connect(_on_timer_spawn_timeout)
 	
 	# 4. LÓGICA DE INÍCIO (Único Check)
-	if pular_intro_proxima_vez:
-		pular_intro_proxima_vez = false # Reseta para a próxima vez
+	if pular_intro_fase2:
+		pular_intro_fase2 = false # Reseta para a próxima vez
 		texto_fase.visible = false      # Garante que o letreiro não apareça
 		encerrar_dialogo_e_iniciar_jogo() # Vai direto para o combate
 	else:
@@ -138,62 +149,76 @@ func encerrar_dialogo_e_iniciar_jogo():
 	
 	print("Gameplay Iniciado!")
 
-# --- LÓGICA DO SISTEMA DE ONDAS ---
+# --- LÓGICA DO SISTEMA DE ONDAS ADAPTADA ---
 
 func _on_timer_spawn_timeout():
 	if inimigos_spawnados_na_onda < inimigos_por_onda:
-		spawnar_saci()
+		spawnar_boto()
 	else:
-		timer_spawn.stop() # Para de criar inimigos até a próxima onda
+		timer_spawn.stop()
 
-func spawnar_saci():
-	var saci = cena_saci.instantiate()
+func spawnar_boto():
+	var boto = cena_boto.instantiate()
+	var largura_tela = 960
+	var altura_tela = 720
+	var margem_seguranca = 250 # Distância que você pediu
+	var margem_fora = 100 # Para surgir fora da visão
 	
-	# Posição X aleatória baseada na largura da tela (ex: 960px)
-	var largura_tela = get_viewport_rect().size.x
-	var x_aleatorio = randf_range(50, largura_tela - 50)
-	saci.global_position = Vector2(x_aleatorio, -50) # Começa um pouco acima da tela
+	var lado = randi() % 4
+	var pos_inicial = Vector2.ZERO
+	var direcao_alvo = Vector2.ZERO
+
+	match lado:
+		0: # Topo -> Para baixo
+			pos_inicial = Vector2(randf_range(100, largura_tela - 100), -margem_fora)
+			direcao_alvo = Vector2.DOWN
+		1: # Baixo -> Para cima
+			pos_inicial = Vector2(randf_range(100, largura_tela - 100), altura_tela + margem_fora)
+			direcao_alvo = Vector2.UP
+		2: # Esquerda -> Para direita
+			# Aqui aplicamos a sua restrição de 250px de distância do topo/baixo
+			pos_inicial = Vector2(-margem_fora, randf_range(margem_seguranca, altura_tela - margem_seguranca))
+			direcao_alvo = Vector2.RIGHT
+		3: # Direita -> Para esquerda
+			# Aqui aplicamos a sua restrição de 250px de distância do topo/baixo
+			pos_inicial = Vector2(largura_tela + margem_fora, randf_range(margem_seguranca, altura_tela - margem_seguranca))
+			direcao_alvo = Vector2.LEFT
+
+	boto.global_position = pos_inicial
+	if boto.has_method("configurar_direcao"):
+		boto.configurar_direcao(direcao_alvo)
 	
-	# Conecta o sinal para saber quando o Saci sumir/morrer
-	saci.tree_exited.connect(_on_saci_saiu_da_cena)
+	boto.tree_exited.connect(_on_inimigo_saiu_da_cena)
+	gameplay.add_child(boto)
 	
-	gameplay.add_child(saci)
 	inimigos_spawnados_na_onda += 1
 	inimigos_restantes_na_tela += 1
 
-func _on_saci_saiu_da_cena():
+func _on_inimigo_saiu_da_cena():
 	inimigos_restantes_na_tela -= 1
-	
-	# Verifica se a onda acabou (todos spawnados e todos mortos/fora da tela)
 	if inimigos_restantes_na_tela <= 0 and inimigos_spawnados_na_onda >= inimigos_por_onda:
 		preparar_proxima_onda()
 
 func preparar_proxima_onda():
-	# TRAVA DE SEGURANÇA: Só continua se o nó ainda estiver na árvore
-	if not is_inside_tree(): 
-		return
+	if not is_inside_tree(): return
 
 	if onda_atual < total_ondas:
 		onda_atual += 1
-		inimigos_por_onda += 1 
-		inimigos_spawnados_na_onda = 0
+		inimigos_por_onda += 3 # Adiciona 1 boto a cada onda
+		inimigos_spawnados_na_onda = 1
 		
 		if hud and hud.has_method("atualizar_onda"):
 			hud.atualizar_onda(onda_atual, total_ondas)
 		
-		print("Iniciando Onda: ", onda_atual)
-		
-		# Outra trava aqui para o timer
 		var timer = get_tree().create_timer(3.0)
-		if timer:
-			await timer.timeout
-			if is_inside_tree(): # Verifica de novo após o tempo passar
-				timer_spawn.start()
+		await timer.timeout
+		if is_inside_tree():
+			timer_spawn.start()
 	else:
 		vitoria()
 
 func vitoria():
-	Fase1.pular_intro_proxima_vez = false
+	Fase2.pular_intro_fase2 = false
 	await get_tree().create_timer(2.0).timeout
 	estado_fase = "VITORIA"
 	get_tree().paused = true # Para tudo

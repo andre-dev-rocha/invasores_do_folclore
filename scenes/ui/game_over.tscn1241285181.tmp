@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cesy0aswmfiro"]
+
+[ext_resource type="Script" uid="uid://bu6vg8f4jaac4" path="res://scripts/game_over.gd" id="1_fu4wh"]
+[ext_resource type="AudioStream" uid="uid://b1qoho4mjtmxm" path="res://assets/audio/sfx/gameoversound1.wav" id="2_x6o8e"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=1292071311]
+process_mode = 3
+script = ExtResource("1_fu4wh")
+
+[node name="Fundo" type="ColorRect" parent="." unique_id=1920988092]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=401369682]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Centro" unique_id=52200736]
+layout_mode = 2
+
+[node name="Titulo" type="Label" parent="Centro/VBoxContainer" unique_id=1775314863]
+layout_mode = 2
+text = "FIM DE JOGO"
+
+[node name="BtnTentarNovamente" type="Button" parent="Centro/VBoxContainer" unique_id=1527616291]
+layout_mode = 2
+text = "Tentar Novamente"
+
+[node name="BtnMenu" type="Button" parent="Centro/VBoxContainer" unique_id=1833837285]
+layout_mode = 2
+text = "Menu Principal
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=248417541]
+stream = ExtResource("2_x6o8e")
+bus = &"SFX"

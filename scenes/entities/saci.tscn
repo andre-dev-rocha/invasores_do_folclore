@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cuyoh4o5413sx" path="res://scripts/saci.gd" id="1_ynanf"]
 [ext_resource type="Texture2D" uid="uid://bypam5guq5v6" path="res://assets/sprites/enemies/sprite_saci.png" id="2_ksb60"]
+[ext_resource type="AudioStream" uid="uid://brulld5hgt2tr" path="res://assets/audio/sfx/saci_disparo.wav" id="3_u1xxb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ksb60"]
 atlas = ExtResource("2_ksb60")
@@ -270,6 +271,7 @@ radius = 54.037025
 z_index = 13
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_ynanf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2117366406]
@@ -286,5 +288,10 @@ rect = Rect2(-500, -10, 1000, 20)
 
 [node name="TimerTiro" type="Timer" parent="." unique_id=1899886612 groups=["inimigo"]]
 autostart = true
+
+[node name="SomTiro" type="AudioStreamPlayer2D" parent="." unique_id=107354737]
+stream = ExtResource("3_u1xxb")
+volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

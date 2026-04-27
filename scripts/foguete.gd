@@ -14,3 +14,7 @@ func _process(delta):
 func _on_screen_exited():
 	# Limpa da memória para não pesar o jogo
 	queue_free()
+func _on_area_entered(area):
+	if area.has_method("receber_dano"):
+		area.receber_dano() # O inimigo decide se morre ou perde vida
+		queue_free() # O laser sempre some
