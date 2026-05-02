@@ -1,83 +1,118 @@
 extends CharacterBody2D
 
-@export var velocidade : float = 400.0
-@onready var som_motor = $SomMotor
+@export_group("Movimentação")
+@export var velocidade: float = 400.0
 
-# Configurações de volume em Decibéis
-var volume_idle: float = -15.0  # Som baixo (parado)
-var volume_movimento: float = -5.0 # Som alto (andando)
-var suavidade_volume: float = 5.0 # Velocidade da transição
+@export_group("Munição")
+@export var municao_maxima: int = 80
+var municao_atual: int = 40 # Começa carregado
 
-var tempo_inicio_cooldown = 0.0
+@export_group("Combate")
+@export var cadencia_disparo: float = 0.4 
+var pode_atirar: bool = true 
+
+@export_group("Escudo")
+@export var duracao_escudo: float = 7.0      
+@export var tempo_cooldown_escudo: float = 28.0 
+
+# Variáveis Internas
 var vidas = 3
-
-# Configurações do Escudo (Modificadas para 4s e 16s) 
-@export var duracao_escudo : float = 7.0      
-@export var tempo_cooldown_escudo : float = 28.0 
-
 var escudo_disponivel = true
 var escudo_ativo = false
+var tempo_inicio_cooldown = 0.0
 
+# Referências de Áudio e Volume
+@onready var som_motor = $SomMotor
 @onready var som_escudo = $SomEscudo
+@onready var som_foguete = $SomFoguete
+var volume_idle: float = -15.0  
+var volume_movimento: float = -5.0 
+var suavidade_volume: float = 5.0 
+
+# Referências de Cena e Nós
 @onready var escudo_area = $EscudoArea
 @onready var ponto_disparo = $PontoDisparo
 @onready var anim_escudo = $EscudoArea/AnimatedSprite2D
 @onready var hud = get_tree().current_scene.find_child("HUD")
-@onready var som_foguete = $SomFoguete
 var cena_explosao = preload("res://scenes/entities/explosao.tscn")
 var cena_laser = preload("res://scenes/entities/foguete.tscn")
+
+# --- FUNÇÃO READY ATUALIZADA ---
+func _ready():
+	add_to_group("player")
+	if has_node("Hitbox"):
+		$Hitbox.add_to_group("player")
+	
+	# 1. CARREGA OS UPGRADES DA OFICINA (SINGLETON GLOBAL)
+	# Isso sobrescreve os valores padrão pelos valores melhorados
+	velocidade = Global.get_velocidade()
+	vidas = Global.get_vidas()
+	cadencia_disparo = Global.get_cadencia()
+	duracao_escudo = Global.get_duracao_escudo()
+	
+	# 2. DEBUG PARA CONSOLE
+	print("--- ZÉ GALÁXIA TURBINADO ---")
+	print("Vidas: ", vidas, " | Vel: ", velocidade, " | Cadência: ", cadencia_disparo)
+	
+	# 3. SINCRONIZA O HUD COM OS NOVOS VALORES
+	if hud:
+		await get_tree().process_frame
+		if hud.has_method("atualizar_vidas"):
+			hud.atualizar_vidas(vidas)
+		if hud.has_method("atualizar_municao"):
+			hud.atualizar_municao(municao_atual)
+		if hud.has_method("atualizar_sucata"):
+			hud.atualizar_sucata(Global.total_sucatas)
+
 func _process(_delta):
 	atualizar_hud_escudo()
-
-
-func atualizar_hud_escudo():
-	if hud == null: return
 	
-	if escudo_ativo:
-		# Enquanto o escudo está protegendo por 4s, a barra fica cheia
-		hud.atualizar_barra_escudo(100)
-	elif not escudo_disponivel:
-		# Calcula o progresso dos 16 segundos de cooldown 
-		var tempo_passado = (Time.get_ticks_msec() - tempo_inicio_cooldown) / 1000.0
-		var porcentagem = (tempo_passado / tempo_cooldown_escudo) * 100
-		hud.atualizar_barra_escudo(clamp(porcentagem, 0, 100))
-	else:
-		# Escudo pronto para uso
-		hud.atualizar_barra_escudo(100)
-		
-		
+	if (Input.is_action_pressed("ui_accept") or Input.is_action_pressed("atirar")) and pode_atirar:
+		atirar()
 
 func _physics_process(_delta):
-	# 1. Movimentação Horizontal e Vertical
-	# Input.get_vector lê as 4 direções e retorna um vetor normalizado
 	var direcao = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	if direcao != Vector2.ZERO:
 		velocity = direcao * velocidade
-		# Aumenta o volume suavemente se estiver movendo
 		som_motor.volume_db = lerp(som_motor.volume_db, volume_movimento, suavidade_volume * _delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, velocidade)
-		# Diminui o volume suavemente se estiver parado
 		som_motor.volume_db = lerp(som_motor.volume_db, volume_idle, suavidade_volume * _delta)
 	
 	move_and_slide()
-	
-	# 2. Limitar a nave dentro da tela (Clamp)
-	# Isso evita que o jogador suma por cima ou por baixo
-	var limite_tela = get_viewport_rect().size
-	global_position.x = clamp(global_position.x, 30, limite_tela.x - 30)
-	global_position.y = clamp(global_position.y, 30, limite_tela.y - 30)
-	
-	
-	# Controle de Tiro 
-	if Input.is_action_just_pressed("atirar"):
-		atirar()
-		
+	limitar_na_tela()
 	
 	if Input.is_action_just_pressed("escudo") and escudo_disponivel:
 		iniciar_ciclo_escudo()
 
+func atirar():
+	if municao_atual <= 0:
+		print("Sem munição!")
+		return
+		
+	pode_atirar = false 
+	municao_atual -= 1
+	
+	if hud and hud.has_method("atualizar_municao"):
+		hud.atualizar_municao(municao_atual)
+		
+	var laser = cena_laser.instantiate()
+	laser.z_index = 10 
+	laser.global_position = ponto_disparo.global_position
+	get_tree().current_scene.add_child(laser)
+	
+	if som_foguete:
+		som_foguete.play()
+	
+	# Usa a cadência vinda do Global
+	await get_tree().create_timer(cadencia_disparo).timeout
+	pode_atirar = true
+
+func adicionar_municao(quantidade: int):
+	municao_atual = clamp(municao_atual + quantidade, 0, municao_maxima)
+	if hud and hud.has_method("atualizar_municao"):
+		hud.atualizar_municao(municao_atual)
 
 func iniciar_ciclo_escudo():
 	escudo_ativo = true
@@ -85,77 +120,66 @@ func iniciar_ciclo_escudo():
 	escudo_area.visible = true
 	escudo_area.set_deferred("monitoring", true)
 	
-	
-# === NOVA LÓGICA DE ÁUDIO ===
 	if som_escudo:
-		som_escudo.play() # Inicia o som do escudo
-	# ============================
+		som_escudo.play()
 	
 	anim_escudo.frame = 0 
 	anim_escudo.play("default") 
 	
-	print("Escudo Ativado! Proteção por ", duracao_escudo, " segundos.")
-
-	# Espera o tempo de duração do escudo (7 segundos)
+	# Usa a duração vinda do Global
 	await get_tree().create_timer(duracao_escudo).timeout
 	
 	escudo_ativo = false
 	escudo_area.visible = false
 	escudo_area.set_deferred("monitoring", false)
 	
-	# === PARAR O ÁUDIO (Opcional) ===
 	if som_escudo:
-		som_escudo.stop() # Para o som quando o escudo desativa
-	# ===============================
+		som_escudo.stop()
 	
 	anim_escudo.stop() 
 	
-	print("Escudo desativado. Iniciando cooldown...")
 	tempo_inicio_cooldown = Time.get_ticks_msec()
 	
 	await get_tree().create_timer(tempo_cooldown_escudo).timeout
 	escudo_disponivel = true
 
-func atirar():
-	print("Laser disparado pelo Capitão Zé Galáxia!")
-	var laser = cena_laser.instantiate()
-	laser.z_index = 10 
-	laser.global_position = ponto_disparo.global_position
-	get_tree().current_scene.add_child(laser)
+func atualizar_hud_escudo():
+	if hud == null: return
 	
-	som_foguete.play()
+	if escudo_ativo:
+		hud.atualizar_barra_escudo(100)
+	elif not escudo_disponivel:
+		var tempo_passado = (Time.get_ticks_msec() - tempo_inicio_cooldown) / 1000.0
+		var porcentagem = (tempo_passado / tempo_cooldown_escudo) * 100
+		hud.atualizar_barra_escudo(clamp(porcentagem, 0, 100))
+	else:
+		hud.atualizar_barra_escudo(100)
 
 func receber_dano():
 	if escudo_ativo:
-		
 		return
 
 	vidas -= 1
-	print("Dano recebido! Vidas: ", vidas)
-	
-	if hud:
+	if hud and hud.has_method("atualizar_vidas"):
 		hud.atualizar_vidas(vidas)
 	
 	if vidas <= 0:
 		morrer()
 
 func morrer():
-	print("Capitão Zé Galáxia foi abatido!")
-	$Hitbox.set_deferred("disabled", true)
-	# 1. Cria a explosão no lugar da nave
+	$Hitbox.set_deferred("disabled", true) 
 	var explosao = cena_explosao.instantiate()
 	explosao.global_position = global_position
 	get_tree().current_scene.add_child(explosao)
 	
-	# 2. Esconde o jogador e desativa colisão (ele "sumiu")
 	visible = false
-	set_physics_process(false) # Para o movimento e motor
-	# Desativa a colisão para não tomar dano depois de morto
-	$Hitbox.set_deferred("disabled", true) 
+	set_physics_process(false) 
+	set_process(false)
 	
-	# 3. Avisa a fase para iniciar a sequência de Game Over
 	if get_tree().current_scene.has_method("iniciar_game_over"):
 		get_tree().current_scene.iniciar_game_over()
+
 func limitar_na_tela():
-	var largura_tela = get_viewport_rect().size.x
-	global_position.x = clamp(global_position.x, 20, largura_tela - 20) 
+	var limite_tela = get_viewport_rect().size
+	global_position.x = clamp(global_position.x, 30, limite_tela.x - 30)
+	global_position.y = clamp(global_position.y, 30, limite_tela.y - 30)

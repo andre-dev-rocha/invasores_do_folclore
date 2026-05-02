@@ -38,3 +38,5 @@ scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_cb4uo")
 autoplay = "default"
 frame_progress = 0.6188119
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

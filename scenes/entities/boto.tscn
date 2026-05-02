@@ -123,7 +123,7 @@ position = Vector2(-18, 13)
 shape = SubResource("CircleShape2D_sko36")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1030806305]
-rect = Rect2(-500, -10, 1000, 20)
+rect = Rect2(-500, -20, 1000, 80)
 
 [node name="TimerGranada" type="Timer" parent="." unique_id=619053573]
 unique_name_in_owner = true

@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://cjhsfldttgyk5"]
+
+[ext_resource type="Script" uid="uid://bvftoad82autc" path="res://scripts/loja_upgrades.gd" id="1_xu0yr"]
+[ext_resource type="Texture2D" uid="uid://bfwksg45hobog" path="res://assets/backgrounds/loja_de_upgrades.png" id="2_1cv04"]
+[ext_resource type="Texture2D" uid="uid://klgfnbp3xs8b" path="res://assets/backgrounds/circulo_upgrade.png" id="3_1501r"]
+[ext_resource type="AudioStream" uid="uid://ctkyql3dpa2q1" path="res://assets/audio/music/track 7.ogg" id="4_1cv04"]
+
+[node name="LojaUpgrades" type="Control" unique_id=1673656263]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xu0yr")
+
+[node name="Background" type="TextureRect" parent="." unique_id=507544188]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = ExtResource("2_1cv04")
+expand_mode = 1
+
+[node name="MenuLateral" type="Control" parent="." unique_id=116334991]
+anchors_preset = 0
+offset_right = 305.0
+offset_bottom = 710.0
+mouse_filter = 2
+
+[node name="TituloLoja" type="Label" parent="MenuLateral" unique_id=1432967968]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 15.0
+offset_right = 242.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+theme_override_font_sizes/font_size = 20
+text = "Oficina do Capitão"
+
+[node name="ListaUpgrades" type="VBoxContainer" parent="MenuLateral" unique_id=2112208894]
+layout_mode = 0
+offset_left = 116.00001
+offset_top = 85.99999
+offset_right = 313.66663
+offset_bottom = 728.2222
+scale = Vector2(0.9, 0.9)
+theme_override_constants/separation = 50
+
+[node name="LinhaCadencia" type="HBoxContainer" parent="MenuLateral/ListaUpgrades" unique_id=1745057646]
+layout_mode = 2
+
+[node name="InfoVBox" type="VBoxContainer" parent="MenuLateral/ListaUpgrades/LinhaCadencia" unique_id=2042273423]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Nome" type="Label" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox" unique_id=739390145]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+theme_override_font_sizes/font_size = 20
+text = "Cadência"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox" unique_id=67059583]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="C1" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer" unique_id=1586179311]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="C2" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer" unique_id=1564237367]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="C3" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer" unique_id=797758914]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="UpgradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer" unique_id=881761212]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "+"
+
+[node name="PreçoLabel" type="Label" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox" unique_id=874348449]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+text = "Custo: 20 sucatas"
+
+[node name="LinhaDurabilidade" type="HBoxContainer" parent="MenuLateral/ListaUpgrades" unique_id=1483279651]
+layout_mode = 2
+
+[node name="InfoVBox" type="VBoxContainer" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade" unique_id=1229434434]
+layout_mode = 2
+
+[node name="Nome" type="Label" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox" unique_id=724276822]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+theme_override_font_sizes/font_size = 20
+text = "Durabilidade"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox" unique_id=481986083]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="C1" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer" unique_id=595131123]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="C2" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer" unique_id=29753327]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="C3" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer" unique_id=1806846042]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="UpgradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer" unique_id=46532437]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "+"
+
+[node name="PreçoLabel" type="Label" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox" unique_id=1129398504]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+text = "Custo: 20 sucatas
+"
+
+[node name="LinhaVelocidade" type="HBoxContainer" parent="MenuLateral/ListaUpgrades" unique_id=970977205]
+layout_mode = 2
+
+[node name="InfoVBox" type="VBoxContainer" parent="MenuLateral/ListaUpgrades/LinhaVelocidade" unique_id=992294727]
+layout_mode = 2
+
+[node name="Nome" type="Label" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox" unique_id=1653623778]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+theme_override_font_sizes/font_size = 20
+text = "Velocidade"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox" unique_id=581650171]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="C1" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer" unique_id=1223559391]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="C2" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer" unique_id=1392766460]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="C3" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer" unique_id=1951799258]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="UpgradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer" unique_id=1958497441]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "+"
+
+[node name="PreçoLabel" type="Label" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox" unique_id=191247995]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+text = "Custo: 20 sucatas
+"
+
+[node name="LinhaEscudo" type="HBoxContainer" parent="MenuLateral/ListaUpgrades" unique_id=435979721]
+layout_mode = 2
+
+[node name="InfoVBox" type="VBoxContainer" parent="MenuLateral/ListaUpgrades/LinhaEscudo" unique_id=2047614121]
+layout_mode = 2
+
+[node name="Nome" type="Label" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox" unique_id=1885129525]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+theme_override_font_sizes/font_size = 20
+text = "Escudo"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox" unique_id=1156393425]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="C1" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer" unique_id=783898900]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="C2" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer" unique_id=3146376]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="C3" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer" unique_id=2014004275]
+layout_mode = 2
+texture = ExtResource("3_1501r")
+
+[node name="UpgradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer" unique_id=381353532]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "+"
+
+[node name="PreçoLabel" type="Label" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox" unique_id=1320902544]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+text = "Custo: 20 sucatas
+"
+
+[node name="SaldoSucataLabel" type="Label" parent="MenuLateral" unique_id=1384740567]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 140.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.25882354, 0.21176471, 0.15686275, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="BtnIniciarMissao" type="Button" parent="." unique_id=728832631]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 647.0
+offset_right = 211.0
+offset_bottom = 678.0
+text = "Iniciar Missão"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=654794965]
+stream = ExtResource("4_1cv04")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer/UpgradeBtn" to="." method="_on_upgrade_cadencia"]
+[connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer/UpgradeBtn" to="." method="_on_upgrade_durabilidade"]
+[connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer/UpgradeBtn" to="." method="_on_upgrade_velocidade"]
+[connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer/UpgradeBtn" to="." method="_on_upgrade_escudo"]
+[connection signal="pressed" from="BtnIniciarMissao" to="." method="_on_btn_iniciar_missao_pressed"]

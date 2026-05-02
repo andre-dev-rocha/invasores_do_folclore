@@ -34,8 +34,10 @@ func _ready():
 	slider_efeitos.value = db_to_linear(AudioServer.get_bus_volume_db(bus_efeitos_id)) * 100
 
 func _on_btn_jogar_pressed():
+	# 1. Limpa a memória do Global
+	Global.resetar_progresso_total()
 	# Direciona para a introdução em Cordel
-	get_tree().change_scene_to_file("res://scenes/ui/intro_cordel.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/cordel_fase_1.tscn")
 
 func _on_btn_opcoes_pressed():
 	menu_buttons.visible = false

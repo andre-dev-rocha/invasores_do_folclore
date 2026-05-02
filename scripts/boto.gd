@@ -2,7 +2,7 @@ extends Area2D
 
 # --- CONFIGURAÇÕES EXPORTADAS ---
 @export_group("Atributos")
-@export var vidas: int = 4
+@export var vidas: int = 3
 @export var valor_pontos: int = 250
 var direcao_movimento: Vector2 = Vector2.DOWN 
 @export var velocidade_cruzeiro: float = 90.0
@@ -10,6 +10,10 @@ var direcao_movimento: Vector2 = Vector2.DOWN
 @export var velocidade_descida: float = 30.0
 @export var amplitude: float = 60.0
 @export var frequencia: float = 1.0
+@export var chance_drop_municao: float = 0.4 
+@export var chance_drop_sucata_boto: float = 0.7 
+var cena_item_municao = preload("res://scenes/entities/ammo_pack.tscn")
+var cena_sucata = preload("res://scenes/entities/sucata_espacial.tscn")
 
 # --- REFERÊNCIAS ---
 var cena_granada = preload("res://scenes/entities/bola_energia.tscn")
@@ -87,7 +91,18 @@ func morrer():
 	# Pontuação (Se sua Fase tiver o método)
 	if get_tree().current_scene.has_method("adicionar_pontos"):
 		get_tree().current_scene.adicionar_pontos(valor_pontos)
-	
+	if randf() < chance_drop_municao:
+		var pack = cena_item_municao.instantiate()
+		pack.global_position = global_position
+		# Adiciona o item à cena principal (fora do nó do inimigo que será deletado)
+		get_tree().current_scene.add_child(pack)
+	if randf() < chance_drop_sucata_boto:
+		# Podemos até spawnar 2 sucatas para o Boto
+		for i in range(2): 
+			var scrap = cena_sucata.instantiate()
+			# Adiciona um pequeno desvio para as sucatas não ficarem uma em cima da outra
+			scrap.global_position = global_position + Vector2(randf_range(-20, 20), randf_range(-20, 20))
+			get_tree().current_scene.call_deferred("add_child", scrap)
 	queue_free()
 
 # Detecta impacto com o laser do player

@@ -284,7 +284,7 @@ frame_progress = 0.27029735
 shape = SubResource("CircleShape2D_v0l3j")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1351783876]
-rect = Rect2(-500, -10, 1000, 20)
+rect = Rect2(-500, -67.14285, 1007.1428, 114.285706)
 
 [node name="TimerTiro" type="Timer" parent="." unique_id=1899886612 groups=["inimigo"]]
 autostart = true

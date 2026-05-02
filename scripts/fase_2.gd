@@ -8,7 +8,7 @@ var cena_vitoria = preload("res://scenes/ui/vitoria.tscn")
 var game_over_iniciado: bool = false
 var pontuacao: int = 0
 var onda_atual: int = 1
-var inimigos_por_onda: int = 10
+var inimigos_por_onda: int = 6
 var inimigos_restantes_na_tela: int = 0
 var inimigos_spawnados_na_onda: int = 0
 
@@ -57,6 +57,7 @@ var dialogos = [
 var indice_dialogo = 0
 
 func _ready():
+	Global.salvar_checkpoint_sucata()
 	# 1. Configurações Iniciais de nós
 	gameplay.process_mode = Node.PROCESS_MODE_DISABLED
 	caixa_dialogo.visible = false
@@ -204,7 +205,7 @@ func preparar_proxima_onda():
 
 	if onda_atual < total_ondas:
 		onda_atual += 1
-		inimigos_por_onda += 3 # Adiciona 1 boto a cada onda
+		inimigos_por_onda += 2 # Adiciona 2 boto a cada onda
 		inimigos_spawnados_na_onda = 1
 		
 		if hud and hud.has_method("atualizar_onda"):

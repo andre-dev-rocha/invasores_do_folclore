@@ -2838,7 +2838,7 @@ texture = ExtResource("3_uymmr")
 centered = false
 
 [node name="CamadaEstrelas" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1157001959]
-motion_scale = Vector2(0, 0.4)
+motion_scale = Vector2(0, 2)
 motion_mirroring = Vector2(0, 1440)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CamadaEstrelas" unique_id=1248893564]

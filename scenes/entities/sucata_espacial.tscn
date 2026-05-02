@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dw5mvxqvhmnux"]
+
+[ext_resource type="Script" uid="uid://ddsn1270fk4tk" path="res://scripts/sucata_espacial.gd" id="1_13y82"]
+[ext_resource type="Texture2D" uid="uid://bx65tni10848g" path="res://assets/sprites/player/sucata_espacial_01.png" id="1_pp5es"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13y82"]
+radius = 21.0
+
+[node name="SucataEspacial" type="Area2D" unique_id=723955471]
+script = ExtResource("1_13y82")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1216798638]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_pp5es")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=295783844]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_13y82")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=229862754]

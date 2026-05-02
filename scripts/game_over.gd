@@ -21,6 +21,7 @@ func _on_btn_tentar_novamente_pressed():
 	elif cena_atual is Fase2:
 		Fase2.pular_intro_fase2 = true
 		
+	Global.restaurar_checkpoint_sucata()
 	get_tree().reload_current_scene()
 
 func _on_btn_menu_principal_pressed():
