@@ -20,6 +20,8 @@ func _on_btn_tentar_novamente_pressed():
 		Fase1.pular_intro_proxima_vez = true
 	elif cena_atual is Fase2:
 		Fase2.pular_intro_fase2 = true
+	elif cena_atual is Fase4:
+		Fase4.pular_intro_fase4 = true
 		
 	Global.restaurar_checkpoint_sucata()
 	get_tree().reload_current_scene()

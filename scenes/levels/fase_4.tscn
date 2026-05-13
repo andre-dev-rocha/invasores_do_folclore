@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://cfase4scene15"]
+
+[ext_resource type="Script" path="res://scripts/fase_4.gd" id="1_f4"]
+[ext_resource type="Script" uid="uid://dgohdwtf1h2pa" path="res://scripts/parallax_background.gd" id="2_f4"]
+[ext_resource type="Texture2D" uid="uid://beih50kotha2k" path="res://assets/backgrounds/background_solido.png" id="3_f4"]
+[ext_resource type="Texture2D" uid="uid://bgs2m3hbohdyr" path="res://assets/backgrounds/background_estrelas.png" id="4_f4"]
+[ext_resource type="Texture2D" uid="uid://c6usmdu56n270" path="res://assets/backgrounds/background_sombras_2.png" id="5_f4"]
+[ext_resource type="PackedScene" uid="uid://diyrwwgfb503f" path="res://scenes/entities/player.tscn" id="6_f4"]
+[ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="7_f4"]
+[ext_resource type="PackedScene" uid="uid://dgjnlwkvka8n5" path="res://scenes/entities/hud.tscn" id="8_f4"]
+[ext_resource type="AudioStream" uid="uid://byf6itdnp8jog" path="res://assets/audio/music/track 9.ogg" id="9_f4"]
+[ext_resource type="PackedScene" uid="uid://b3tebgvojdktk" path="res://scenes/ui/menu_pause.tscn" id="10_f4"]
+
+[node name="Fase4" type="Node2D" unique_id=200001000]
+script = ExtResource("1_f4")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=200002000]
+script = ExtResource("2_f4")
+
+[node name="CamadaSolida" type="ParallaxLayer" parent="ParallaxBackground" unique_id=200003000]
+rotation = 1.5707964
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(0, 720)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CamadaSolida" unique_id=200004000]
+modulate = Color(1.0, 0.6, 0.4, 1.0)
+position = Vector2(-404.9999, -956.00116)
+scale = Vector2(6, 6)
+texture = ExtResource("3_f4")
+centered = false
+
+[node name="CamadaEstrelas" type="ParallaxLayer" parent="ParallaxBackground" unique_id=200005000]
+motion_scale = Vector2(0, 0.4)
+motion_mirroring = Vector2(0, 1440)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CamadaEstrelas" unique_id=200006000]
+position = Vector2(0, 720)
+rotation = -1.5707964
+scale = Vector2(1.1251309, 2.6660843)
+texture = ExtResource("4_f4")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/CamadaEstrelas" unique_id=200007000]
+position = Vector2(0, 720)
+rotation = -1.5707964
+scale = Vector2(1.1251309, 2.6660843)
+texture = ExtResource("4_f4")
+centered = false
+flip_v = true
+
+[node name="CamadaSombras" type="ParallaxLayer" parent="ParallaxBackground" unique_id=200008000]
+motion_scale = Vector2(0.6, 0)
+motion_mirroring = Vector2(11520, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CamadaSombras" unique_id=200009000]
+modulate = Color(1.0, 0.6, 0.4, 0.5)
+position = Vector2(0, 366)
+scale = Vector2(1, 2)
+texture = ExtResource("5_f4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/CamadaSombras" unique_id=200010000]
+modulate = Color(1.0, 0.6, 0.4, 0.5)
+position = Vector2(5760, 360)
+scale = Vector2(1, 2)
+texture = ExtResource("5_f4")
+flip_h = true
+
+[node name="Gameplay" type="Node2D" parent="." unique_id=200011000]
+
+[node name="Player" parent="Gameplay" unique_id=200012000 instance=ExtResource("6_f4")]
+position = Vector2(455, 670)
+scale = Vector2(1, 1)
+
+[node name="TimerSpawn" type="Timer" parent="Gameplay" unique_id=200013000]
+wait_time = 2.5
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=200014000]
+
+[node name="TextoFase" type="Label" parent="UI" unique_id=200015000]
+offset_left = 978.0
+offset_top = 249.0
+offset_right = 1537.0
+offset_bottom = 392.0
+theme_override_fonts/font = ExtResource("7_f4")
+theme_override_font_sizes/font_size = 32
+text = "Fase 4: A Mula Sem Cabeça"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CaixaDialogo" type="Panel" parent="UI" unique_id=200016000]
+offset_left = 38.0
+offset_top = 502.0
+offset_right = 934.0
+offset_bottom = 697.0
+
+[node name="RetratoJogador" type="TextureRect" parent="UI/CaixaDialogo" unique_id=200017000]
+layout_mode = 0
+offset_left = -104.0
+offset_top = -209.0
+offset_right = 194.0
+offset_bottom = -1.0
+expand_mode = 1
+
+[node name="NomePersonagem" type="Label" parent="UI/CaixaDialogo" unique_id=200018000]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 27.0
+
+[node name="TextoFala" type="Label" parent="UI/CaixaDialogo" unique_id=200019000]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 40.0
+offset_right = 878.0
+offset_bottom = 180.0
+autowrap_mode = 2
+
+[node name="AvisoEspaco" type="Label" parent="UI/CaixaDialogo" unique_id=200020000]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 161.0
+offset_right = 889.0
+offset_bottom = 210.0
+text = "Pular (Espaço)
+"
+
+[node name="RetratoInimigo" type="TextureRect" parent="UI/CaixaDialogo" unique_id=200021000]
+layout_mode = 0
+offset_left = 583.0
+offset_top = -189.0
+offset_right = 980.0
+offset_bottom = 88.0
+expand_mode = 1
+
+[node name="HUD" parent="." unique_id=200022000 instance=ExtResource("8_f4")]
+
+[node name="MusicaFase" type="AudioStreamPlayer" parent="." unique_id=200023000]
+stream = ExtResource("9_f4")
+autoplay = true
+bus = &"Music"
+
+[node name="MenuPause" parent="." unique_id=200024000 instance=ExtResource("10_f4")]

@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cmulascene157"]
+
+[ext_resource type="Script" path="res://scripts/mula_sem_cabeca.gd" id="1_mula"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/nave da mula sem cabeca.png" id="2_mula"]
+[ext_resource type="AudioStream" uid="uid://sk1w8fb2487e" path="res://assets/audio/sfx/saci_disparo.mp3" id="3_mula"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mula"]
+radius = 80.0
+
+[node name="MulaSemCabeca" type="Area2D" unique_id=100001000]
+collision_layer = 2
+collision_mask = 9
+script = ExtResource("1_mula")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=100002000]
+shape = SubResource("CircleShape2D_mula")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=100003000]
+rect = Rect2(-600, -300, 1200, 600)
+
+[node name="TimerFogo" type="Timer" parent="." unique_id=100004000]
+unique_name_in_owner = true
+wait_time = 1.8
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=100005000]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_mula")
+
+[node name="SomTiro" type="AudioStreamPlayer2D" parent="." unique_id=100006000]
+stream = ExtResource("3_mula")
+bus = &"SFX"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
