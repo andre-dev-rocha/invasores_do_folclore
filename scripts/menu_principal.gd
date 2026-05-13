@@ -49,7 +49,7 @@ func _on_btn_voltar_opcoes_pressed():
 
 func _on_btn_creditos_pressed():
 	print("Abrindo créditos...")
-	# get_tree().change_scene_to_file("res://cenas/Creditos.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/creditos.tscn")
 
 func _on_btn_sair_pressed():
 	get_tree().quit()
