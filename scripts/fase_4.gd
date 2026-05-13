@@ -7,7 +7,7 @@ var cena_game_over = preload("res://scenes/ui/game_over.tscn")
 var game_over_iniciado: bool = false
 var pontuacao: int = 0
 var onda_atual: int = 1
-var inimigos_por_onda: int = 8
+var inimigos_por_onda: int = 1
 var inimigos_restantes_na_tela: int = 0
 var inimigos_spawnados_na_onda: int = 0
 
@@ -155,9 +155,12 @@ func _on_timer_spawn_timeout():
 func spawnar_mula():
 	var mula = cena_mula.instantiate()
 	var largura_tela = 960
-	var altura_tela = 720
 	var margem_fora = 120
-	var margem_seguranca = 180
+	
+	# NOVO: Limites de altura para a Mula
+	# 80 pixels afasta ela do topo, 250 pixels mantém ela na metade superior
+	var limite_superior_y = 80
+	var limite_inferior_y = 250
 
 	var lado = randi() % 2
 	var pos_inicial = Vector2.ZERO
@@ -165,10 +168,12 @@ func spawnar_mula():
 
 	match lado:
 		0:
-			pos_inicial = Vector2(-margem_fora, randf_range(margem_seguranca, altura_tela - margem_seguranca))
+			# Nasce na esquerda
+			pos_inicial = Vector2(-margem_fora, randf_range(limite_superior_y, limite_inferior_y))
 			direcao_alvo = Vector2.RIGHT
 		1:
-			pos_inicial = Vector2(largura_tela + margem_fora, randf_range(margem_seguranca, altura_tela - margem_seguranca))
+			# Nasce na direita
+			pos_inicial = Vector2(largura_tela + margem_fora, randf_range(limite_superior_y, limite_inferior_y))
 			direcao_alvo = Vector2.LEFT
 
 	mula.global_position = pos_inicial
@@ -180,7 +185,6 @@ func spawnar_mula():
 
 	inimigos_spawnados_na_onda += 1
 	inimigos_restantes_na_tela += 1
-
 func _on_inimigo_saiu_da_cena():
 	inimigos_restantes_na_tela -= 1
 	if inimigos_restantes_na_tela <= 0 and inimigos_spawnados_na_onda >= inimigos_por_onda:

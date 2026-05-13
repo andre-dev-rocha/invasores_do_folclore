@@ -421,6 +421,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xe83n"]
 radius = 51.333336
 
+[sub_resource type="Gradient" id="Gradient_d4qa6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ss7kx"]
+gradient = SubResource("Gradient_d4qa6")
+
 [node name="Player" type="CharacterBody2D" unique_id=563846828 groups=["player"]]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_08t41")
@@ -476,3 +481,8 @@ bus = &"SFX"
 [node name="SomEscudo" type="AudioStreamPlayer2D" parent="." unique_id=1319871732]
 stream = ExtResource("6_ss7kx")
 bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=932587910]
+position = Vector2(-2.000001, -13.333332)
+scale = Vector2(1.2291667, 1.4166667)
+texture = SubResource("GradientTexture2D_ss7kx")

@@ -1,9 +1,9 @@
 extends Area2D
 
 @export_group("Configurações da Granada")
-@export var tempo_detonacao: float = 4.0
+@export var tempo_detonacao: float = 3.5
 @export var raio_atracao: float = 400.0      # Distância de detecção
-@export var forca_atracao: float = 100.0       # Velocidade de perseguição
+@export var forca_atracao: float = 150.0       # Velocidade de perseguição
 @export var velocidade_descida_base: float = 80.0
 
 var tempo_vida: float = 0.0

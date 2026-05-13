@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bwrngjllu2tl2"]
+
+[ext_resource type="Script" uid="uid://c5ejjqfcsbg2" path="res://scripts/bicho_papao.gd" id="1_7o0x0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o0x0"]
+
+[node name="BichoPapao" type="Area2D" unique_id=188531602]
+script = ExtResource("1_7o0x0")
+
+[node name="LaserArea" type="Area2D" parent="." unique_id=1520288341]
+
+[node name="ColorRect" type="ColorRect" parent="LaserArea" unique_id=1589382256]
+offset_right = 40.0
+offset_bottom = 1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserArea" unique_id=1784075217]
+position = Vector2(40, 1000)
+shape = SubResource("RectangleShape2D_7o0x0")

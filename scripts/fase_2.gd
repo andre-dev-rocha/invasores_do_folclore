@@ -8,7 +8,7 @@ var cena_vitoria = preload("res://scenes/ui/vitoria.tscn")
 var game_over_iniciado: bool = false
 var pontuacao: int = 0
 var onda_atual: int = 1
-var inimigos_por_onda: int = 6
+var inimigos_por_onda: int = 1
 var inimigos_restantes_na_tela: int = 0
 var inimigos_spawnados_na_onda: int = 0
 

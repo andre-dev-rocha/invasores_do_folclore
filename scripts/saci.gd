@@ -12,7 +12,7 @@ extends Area2D
 
 @export_group("Drops")
 @export var chance_drop_municao: float = 0.2 # 20% de chance
-@export var chance_drop_sucata: float = 0.4 # 40% de chance de sucata
+@export var chance_drop_sucata: float = 0.6 # 60% de chance de sucata
 # Referências de Cenas
 var cena_item_municao = preload("res://scenes/entities/ammo_pack.tscn")
 var cena_sucata = preload("res://scenes/entities/sucata_espacial.tscn") 

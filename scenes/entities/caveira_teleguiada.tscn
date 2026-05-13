@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ccx4rn6o2f64e"]
+
+[ext_resource type="Script" uid="uid://chvmhb8jyuf0u" path="res://scripts/caveira_teleguiada.gd" id="1_50lju"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wu8st"]
+
+[node name="CaveiraTeleguiada" type="Area2D" unique_id=1484042989]
+script = ExtResource("1_50lju")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1948617015]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=214711432]
+shape = SubResource("CircleShape2D_wu8st")

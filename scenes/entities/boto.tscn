@@ -144,4 +144,10 @@ stream = ExtResource("2_tpixw")
 stream = ExtResource("3_sko36")
 bus = &"SFX"
 
+[node name="CanhaoEsq" type="Marker2D" parent="." unique_id=459709296]
+position = Vector2(-108.57142, 2.8571427)
+
+[node name="CanhaoDir" type="Marker2D" parent="." unique_id=289801290]
+position = Vector2(72.85714, 1.4285713)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
