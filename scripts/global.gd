@@ -44,8 +44,7 @@ func ir_para_proxima_historia():
 	
 	# Define qual cena de cordel carregar baseada na próxima fase
 	var caminho_historia = "res://scenes/ui/cordel_fase_" + str(fase_atual) + ".tscn"
-	
-	if FileAccess.file_exists(caminho_historia):
+	if ResourceLoader.exists(caminho_historia):
 		get_tree().change_scene_to_file(caminho_historia)
 	else:
 		print("Fim das histórias ou arquivo não encontrado!")
