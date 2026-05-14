@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://ccx4rn6o2f64e"]
 
 [ext_resource type="Script" uid="uid://chvmhb8jyuf0u" path="res://scripts/caveira_teleguiada.gd" id="1_50lju"]
+[ext_resource type="Texture2D" uid="uid://cw8rgj65eaguf" path="res://assets/sprites/enemies/boto_projetil_sprite.png" id="2_qh2ct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wu8st"]
+radius = 8.0
 
 [node name="CaveiraTeleguiada" type="Area2D" unique_id=1484042989]
 script = ExtResource("1_50lju")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1948617015]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_qh2ct")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=214711432]
 shape = SubResource("CircleShape2D_wu8st")

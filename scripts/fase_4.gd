@@ -7,7 +7,7 @@ var cena_game_over = preload("res://scenes/ui/game_over.tscn")
 var game_over_iniciado: bool = false
 var pontuacao: int = 0
 var onda_atual: int = 1
-var inimigos_por_onda: int = 1
+var inimigos_por_onda: int = 3
 var inimigos_restantes_na_tela: int = 0
 var inimigos_spawnados_na_onda: int = 0
 
@@ -37,7 +37,7 @@ var dialogos = [
 	{
 		"nome": "Mula Sem Cabeça",
 		"texto": "[ESTRONDO DE CHAMAS] HNGRRRR!!! Você ousou cruzar meu setor do cosmos?!",
-		"imagem": preload("res://assets/sprites/enemies/retrato_boto.png")
+		"imagem": preload("res://assets/sprites/enemies/retrato_mula.png")
 	},
 	{
 		"nome": "Capitão Zé Galáxia",
@@ -47,7 +47,7 @@ var dialogos = [
 	{
 		"nome": "Mula Sem Cabeça",
 		"texto": "[GALOPE TROVEJANTE] Prepare-se para sentir a fúria do meu fogo cósmico!",
-		"imagem": preload("res://assets/sprites/enemies/retrato_boto.png")
+		"imagem": preload("res://assets/sprites/enemies/retrato_mula.png")
 	},
 	{
 		"nome": "Capitão Zé Galáxia",

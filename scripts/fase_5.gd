@@ -136,16 +136,21 @@ func spawnar_bicho_papao():
 	var centro_x = get_viewport_rect().size.x / 2.0
 	boss.global_position = Vector2(centro_x, -200)
 	
-	# Quando o nó do Bicho-Papão sair da cena (for destruído), o jogo entende que você venceu!
-	boss.tree_exited.connect(vitoria_final)
+	# Quando o Bicho-Papao for derrotado, o jogo entende que voce venceu.
+	if boss.has_signal("derrotado"):
+		boss.derrotado.connect(vitoria_final)
 	
 	gameplay.add_child(boss)
 	print("Batalha Final Iniciada!")
 
 func vitoria_final():
+	if not is_inside_tree():
+		return
 	if game_over_iniciado: 
 		return # Previne chamar vitória se o jogador morrer junto com o chefe
-		
+	if estado_fase == "VITORIA":
+		return
+
 	estado_fase = "VITORIA"
 	
 	# Restaura a luz caso o jogador tenha matado o chefe durante o Breu Absoluto
@@ -156,9 +161,12 @@ func vitoria_final():
 	if musica_fase:
 		musica_fase.stop()
 		
-	await get_tree().create_timer(3.0).timeout
+	var timer = get_tree().create_timer(3.0)
+	await timer.timeout
+	if not is_inside_tree():
+		return
 	get_tree().paused = true
 	
 	# Carrega a tela de ZERAMENTO do jogo
-	#var tela_creditos = preload("res://scenes/ui/tela_creditos.tscn").instantiate()
-	#add_child(tela_creditos)
+	var tela_creditos = preload("res://scenes/ui/creditos.tscn").instantiate()
+	add_child(tela_creditos)

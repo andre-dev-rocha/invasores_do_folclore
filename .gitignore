@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+/jogo_completo_para_executar/
+/jogo_completo_para_executar.zip

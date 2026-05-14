@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://drw3cyffni5qs"]
 
 [ext_resource type="Script" uid="uid://dvptaawyqkf1s" path="res://scripts/cordel_fase_3.gd" id="1_pwac6"]
-[ext_resource type="Texture2D" uid="uid://ct16p5wn820ov" path="res://assets/backgrounds/pagina_1_cordel_2.png" id="2_vieiy"]
+[ext_resource type="Texture2D" uid="uid://db1dyqufq8jy3" path="res://assets/backgrounds/pagina_1_cordel_3.jpeg" id="2_vieiy"]
 [ext_resource type="AudioStream" uid="uid://c1lmgku70sce5" path="res://assets/audio/music/track 5.ogg" id="3_vieiy"]
 
 [node name="CordelFase3" type="Control" unique_id=63012288]

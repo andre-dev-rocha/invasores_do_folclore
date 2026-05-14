@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0ow8mwl56ofw"]
 
 [ext_resource type="Script" uid="uid://lgkogoccuhkl" path="res://scripts/cordel_fase_4.gd" id="1_xo66a"]
-[ext_resource type="Texture2D" uid="uid://ct16p5wn820ov" path="res://assets/backgrounds/pagina_1_cordel_2.png" id="2_6sh17"]
+[ext_resource type="Texture2D" uid="uid://g2wnj1b88fte" path="res://assets/backgrounds/pagina_1_cordel_4.jpeg" id="2_xo66a"]
 [ext_resource type="AudioStream" uid="uid://bs2unnvplcskk" path="res://assets/audio/music/track 3.ogg" id="3_3ggoc"]
 
 [node name="CordelFase4" type="Control" unique_id=63012288]
@@ -20,7 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_6sh17")
+texture = ExtResource("2_xo66a")
 expand_mode = 1
 
 [node name="BotaoProximo" type="Button" parent="." unique_id=640058140]

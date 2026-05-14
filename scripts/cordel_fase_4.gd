@@ -7,11 +7,11 @@ var pagina_atual = 0
 
 # Array contendo as imagens completas das páginas do cordel
 var paginas_cordel = [
-	preload("res://assets/backgrounds/pagina_1_cordel_2.png"),
-	preload("res://assets/backgrounds/pagina_2_cordel_2.png"),
-	preload("res://assets/backgrounds/pagina_3_cordel_2.png"),
-	preload("res://assets/backgrounds/pagina_4_cordel_2.png"),
-	preload("res://assets/backgrounds/pagina_5_cordel_2.png")
+	preload("res://assets/backgrounds/pagina_1_cordel_4.jpeg"),
+	preload("res://assets/backgrounds/pagina_2_cordel_4.jpeg"),
+	preload("res://assets/backgrounds/pagina_3_cordel_4.jpeg"),
+	preload("res://assets/backgrounds/pagina_4_cordel_4.jpeg"),
+	preload("res://assets/backgrounds/pagina_5_cordel_4.jpeg")
 ]
 
 func _ready():

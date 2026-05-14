@@ -3,7 +3,13 @@
 [ext_resource type="Script" uid="uid://c5ejjqfcsbg2" path="res://scripts/bicho_papao.gd" id="1_7o0x0"]
 [ext_resource type="Texture2D" uid="uid://bpiu6fdvhs2mu" path="res://assets/sprites/enemies/bicho_papao_sprite.png" id="2_2go5t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o0x0"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hitbox_boss"]
+radius = 125.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_laser_boss"]
+size = Vector2(56, 1300)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2go5t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e1tgy"]
 atlas = ExtResource("2_2go5t")
@@ -262,25 +268,39 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 25.0
 }]
 
 [node name="BichoPapao" type="Area2D" unique_id=188531602 groups=["inimigos"]]
+collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_7o0x0")
 
-[node name="LaserArea" type="Area2D" parent="." unique_id=1520288341]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hitbox_boss")
 
-[node name="ColorRect" type="ColorRect" parent="LaserArea" unique_id=1589382256]
-offset_right = 40.0
-offset_bottom = 1000.0
+[node name="LaserArea" type="Area2D" parent="." unique_id=1520288341]
+visible = false
+collision_layer = 0
+collision_mask = 1
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserArea" unique_id=1784075217]
-position = Vector2(40, 1000)
-shape = SubResource("RectangleShape2D_7o0x0")
+position = Vector2(0, 650)
+shape = SubResource("RectangleShape2D_laser_boss")
+
+[node name="VisualLaser" type="ColorRect" parent="LaserArea" unique_id=1589382256]
+offset_left = -28.0
+offset_right = 28.0
+offset_bottom = 1300.0
+color = Color(1, 0.33333334, 0, 1)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1396997429]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_78sta")
-frame_progress = 0.6850054
+frame_progress = 0.41730765
 
 [node name="TimerHabilidade" type="Timer" parent="." unique_id=1097972850]
+one_shot = true
+
+[connection signal="area_entered" from="LaserArea" to="." method="_on_laser_area_entered"]

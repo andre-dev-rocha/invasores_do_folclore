@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="invasores_do_folclore"
-run/main_scene="uid://bltq4sss6tsf7"
+run/main_scene="uid://dgni7ubay2bl7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
