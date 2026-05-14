@@ -23,13 +23,11 @@ Cada fase possui sua própria narrativa introduzida por diálogos em estilo cord
 
 ---
 
-## Arquivos do Jogo
+## Link do Jogo
 
-O projeto completo e pronto para execução está disponível no seguinte caminho:
+O projeto completo e pronto para execução está disponível no seguinte link:
 
-invasores_do_folclore\jogo_completo_para_executar.zip
-
-Extraia o conteúdo do `.zip` antes de abrir no Godot.
+https://drive.google.com/file/d/1OR-2TfKr7l7492Ec6oRJmEaJvpl2CFq2/view?usp=sharing
 
 ---
 
