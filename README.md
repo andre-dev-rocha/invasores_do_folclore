@@ -23,6 +23,16 @@ Cada fase possui sua própria narrativa introduzida por diálogos em estilo cord
 
 ---
 
+## Arquivos do Jogo
+
+O projeto completo e pronto para execução está disponível no seguinte caminho:
+
+invasores_do_folclore\jogo_completo_para_executar.zip
+
+Extraia o conteúdo do `.zip` antes de abrir no Godot.
+
+---
+
 ## Como Rodar
 
 1. Instale o [Godot 4.6](https://godotengine.org/download)
@@ -30,8 +40,9 @@ Cada fase possui sua própria narrativa introduzida por diálogos em estilo cord
    ```bash
    git clone https://github.com/andre-dev-rocha/invasores_do_folclore.git
    ```
-3. Abra o Godot, clique em **Import** e selecione a pasta do projeto
-4. Pressione **F5** ou clique em **Executar** para jogar
+3. Ou utilize diretamente o arquivo `invasores_do_folclore\jogo_completo_para_executar.zip` — extraia e abra a pasta no Godot
+4. No Godot, clique em **Import** e selecione a pasta do projeto
+5. Pressione **F5** ou clique em **Executar** para jogar
 
 ---
 
@@ -63,7 +74,8 @@ invasores_do_folclore/
 │   ├── entities/           # Entidades do jogo (player, inimigos, projéteis, drops)
 │   ├── levels/             # Cenas das fases (fase_1 a fase_4)
 │   └── ui/                 # Menus, HUD, diálogos, loja, tela de vitória/game over
-└── scripts/                # Lógica GDScript de todas as entidades e fases
+├── scripts/                # Lógica GDScript de todas as entidades e fases
+└── jogo_completo_para_executar.zip  # ← Arquivo pronto para execução
 ```
 
 ---
@@ -82,13 +94,19 @@ invasores_do_folclore/
 - **Música:** Track 7
 - **Mecânica:** Naves do Boto disparam projéteis em direção ao jogador
 
+### Fase 3 — A Cuca Sideral
+- **Inimigo:** Cuca Sideral (nave em formato de jacaré voador com caldeirão)
+- **Narrativa:** Introduzida por sextilhas de cordel que descrevem a derrota do Boto e a chegada da nova ameaça; seguida de diálogo com retratos (estilo visual novel) entre o Capitão Zé Galáxia e a Cuca
+- **Mecânica:** As naves nascem no topo da tela em posições aleatórias e descem com movimento sinuoso (função seno), similar ao nado; disparam projéteis radioativos verdes
+- **Drops:** Alta chance de dropar sucata espacial e munição ao ser destruída
+
 ### Fase 4 — A Mula Sem Cabeça
 - **Inimigo:** Mula Sem Cabeça
 - **Ondas:** 5 (começa com 8 naves, +2 por onda)
 - **Música:** Track 9
-- **Mecânica:** Naves entram pelos lados com movimento de galope (senoidal vertical); caixas de munição surgem a cada 10 segundos
-
-> **Nota:** A fase 3 está em desenvolvimento.
+- **Narrativa:** O cenário muda drasticamente — após a névoa tóxica da Cuca, o espaço se incendeia com a chegada da Mula Sem Cabeça; diálogo com retratos antes do combate
+- **Mecânica:** Naves entram pelos lados com movimento de galope (senoidal vertical); atacam com Spread Shot Triplo; caixas de munição surgem a cada 10 segundos
+- **Status:** 4 vidas; recompensa de 400 pontos
 
 ---
 
@@ -160,7 +178,8 @@ Over    │
 |---|---|---|---|---|
 | Saci | `saci.tscn` | `saci.gd` | — | — |
 | Boto | `boto.tscn` | `boto.gd` | — | — |
-| Mula Sem Cabeça | `mula_sem_cabeca.tscn` | `mula_sem_cabeca.gd` | 6 | 400 |
+| Cuca Sideral | `cuca.tscn` | `cuca.gd` | — | — |
+| Mula Sem Cabeça | `mula_sem_cabeca.tscn` | `mula_sem_cabeca.gd` | 4 | 400 |
 
 ---
 
