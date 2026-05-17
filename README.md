@@ -27,7 +27,7 @@ Cada fase possui sua própria narrativa introduzida por diálogos em estilo cord
 
 O projeto completo e pronto para execução está disponível no seguinte link:
 
-https://drive.google.com/file/d/1OR-2TfKr7l7492Ec6oRJmEaJvpl2CFq2/view?usp=sharing
+[Baixe o jogo clicando aqui](https://drive.google.com/file/d/1tkp0I8s91P8g5oMZFM_pbrlgkodoUWZx/view?usp=sharing)
 
 ---
 
