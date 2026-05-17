@@ -2894,7 +2894,7 @@ flip_h = true
 [node name="Gameplay" type="Node2D" parent="." unique_id=2095428379]
 
 [node name="Player" parent="Gameplay" unique_id=563846828 instance=ExtResource("2_5kpeh")]
-position = Vector2(455, 670)
+position = Vector2(455, 650)
 scale = Vector2(1, 1)
 
 [node name="TimerSpawn" type="Timer" parent="Gameplay" unique_id=288561657]

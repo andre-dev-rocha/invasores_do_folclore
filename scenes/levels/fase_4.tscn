@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://beih50kotha2k" path="res://assets/backgrounds/background_solido.png" id="3_f4"]
 [ext_resource type="Texture2D" uid="uid://bgs2m3hbohdyr" path="res://assets/backgrounds/background_estrelas.png" id="4_f4"]
 [ext_resource type="Texture2D" uid="uid://c6usmdu56n270" path="res://assets/backgrounds/background_sombras_2.png" id="5_f4"]
+[ext_resource type="Script" uid="uid://dgbdm6eqjg4tc" path="res://scripts/terra.gd" id="6_cgyyj"]
 [ext_resource type="PackedScene" uid="uid://diyrwwgfb503f" path="res://scenes/entities/player.tscn" id="6_f4"]
 [ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="7_f4"]
 [ext_resource type="PackedScene" uid="uid://cmulascene157" path="res://scenes/entities/mula_sem_cabeca.tscn" id="8_88k5w"]
@@ -2863,6 +2864,7 @@ position = Vector2(503, 434.85004)
 scale = Vector2(1, 1.3285006)
 sprite_frames = SubResource("SpriteFrames_7kj3q")
 autoplay = "default"
+script = ExtResource("6_cgyyj")
 
 [node name="CamadaSombras" type="ParallaxLayer" parent="ParallaxBackground" unique_id=200008000]
 motion_scale = Vector2(1, 0)
@@ -2884,7 +2886,7 @@ flip_h = true
 [node name="Gameplay" type="Node2D" parent="." unique_id=200011000]
 
 [node name="Player" parent="Gameplay" unique_id=200012000 instance=ExtResource("6_f4")]
-position = Vector2(455, 670)
+position = Vector2(455, 650)
 scale = Vector2(1, 1)
 
 [node name="TimerSpawn" type="Timer" parent="Gameplay" unique_id=200013000]

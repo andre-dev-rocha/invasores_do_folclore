@@ -6,11 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://bgs2m3hbohdyr" path="res://assets/backgrounds/background_estrelas.png" id="4_5055i"]
 [ext_resource type="Texture2D" uid="uid://tdsubhtedgx" path="res://assets/backgrounds/background_sombras.png" id="5_1oivd"]
 [ext_resource type="PackedScene" uid="uid://diyrwwgfb503f" path="res://scenes/entities/player.tscn" id="6_ag3nb"]
+[ext_resource type="PackedScene" uid="uid://bwrngjllu2tl2" path="res://scenes/entities/bicho_papao.tscn" id="7_coxbf"]
 [ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="7_w8lg6"]
 [ext_resource type="PackedScene" uid="uid://dgjnlwkvka8n5" path="res://scenes/entities/hud.tscn" id="8_q7a56"]
-[ext_resource type="AudioStream" uid="uid://dxxy3xxt8oku5" path="res://assets/audio/music/track 6.ogg" id="9_cfvec"]
+[ext_resource type="AudioStream" uid="uid://cpp1bo6lmir" path="res://assets/audio/music/track 4.ogg" id="9_0esa8"]
 [ext_resource type="PackedScene" uid="uid://b3tebgvojdktk" path="res://scenes/ui/menu_pause.tscn" id="10_7bdo7"]
 [ext_resource type="Texture2D" uid="uid://b2sm8h5lvl5q7" path="res://assets/backgrounds/terra.png" id="11_mwtld"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_coxbf"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkvhe"]
+bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl7v6"]
 atlas = ExtResource("11_mwtld")
@@ -2832,6 +2839,7 @@ motion_scale = Vector2(0, 0)
 motion_mirroring = Vector2(0, 720)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CamadaSolida" unique_id=950146273]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 position = Vector2(-404.9999, -956.00116)
 scale = Vector2(6, 6)
 texture = ExtResource("3_bkvhe")
@@ -2861,13 +2869,13 @@ motion_scale = Vector2(0.6, 0)
 motion_mirroring = Vector2(11520, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CamadaSombras" unique_id=1473959266]
-modulate = Color(1, 1, 1, 0.5294118)
-position = Vector2(0, 366)
-scale = Vector2(1, 2)
+modulate = Color(1.5720325, 0, 0, 0.8235294)
+position = Vector2(0.5, 363)
+scale = Vector2(0.9998264, 2.0166667)
 texture = ExtResource("5_1oivd")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/CamadaSombras" unique_id=1569367990]
-modulate = Color(1, 1, 1, 0.5294118)
+modulate = Color(1.5357896, 0.06745762, 0.031524323, 0.8235294)
 position = Vector2(5760, 360)
 scale = Vector2(1, 2)
 texture = ExtResource("5_1oivd")
@@ -2876,11 +2884,14 @@ flip_h = true
 [node name="Gameplay" type="Node2D" parent="." unique_id=2095428379]
 
 [node name="Player" parent="Gameplay" unique_id=563846828 instance=ExtResource("6_ag3nb")]
-position = Vector2(455, 670)
+position = Vector2(455, 650)
 scale = Vector2(1, 1)
 
 [node name="TimerSpawn" type="Timer" parent="Gameplay" unique_id=288561657]
 wait_time = 2.0
+
+[node name="BichoPapao" parent="Gameplay" unique_id=188531602 instance=ExtResource("7_coxbf")]
+position = Vector2(480, 180)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1170051157]
 
@@ -2941,10 +2952,31 @@ offset_right = 980.0
 offset_bottom = 88.0
 expand_mode = 1
 
+[node name="BarraVidaBoss" type="ProgressBar" parent="UI" unique_id=1536106400]
+offset_left = 200.0
+offset_top = 20.0
+offset_right = 800.0
+offset_bottom = 50.0
+theme_override_styles/background = SubResource("StyleBoxFlat_coxbf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bkvhe")
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI/BarraVidaBoss" unique_id=1293725114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_w8lg6")
+text = "BICHO PAPÃO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HUD" parent="." unique_id=1901915659 instance=ExtResource("8_q7a56")]
 
 [node name="MusicaFase" type="AudioStreamPlayer" parent="." unique_id=2107065284]
-stream = ExtResource("9_cfvec")
+stream = ExtResource("9_0esa8")
 autoplay = true
 bus = &"Music"
 
@@ -2957,5 +2989,3 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nh7ca")
 autoplay = "default"
 frame_progress = 0.34976026
-
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=131220568]

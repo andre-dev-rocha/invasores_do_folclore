@@ -1,17 +1,199 @@
 [gd_scene format=3 uid="uid://ccx4rn6o2f64e"]
 
 [ext_resource type="Script" uid="uid://chvmhb8jyuf0u" path="res://scripts/caveira_teleguiada.gd" id="1_50lju"]
-[ext_resource type="Texture2D" uid="uid://cw8rgj65eaguf" path="res://assets/sprites/enemies/boto_projetil_sprite.png" id="2_qh2ct"]
+[ext_resource type="Texture2D" uid="uid://cvckefkafa41e" path="res://assets/sprites/enemies/caveira_projetil_sprite.png" id="2_wu8st"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu8st"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(0, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvthg"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(340, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y47e5"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(680, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5nyh"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1020, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lovs"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1360, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa8nt"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1700, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usmig"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(0, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jsyk"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(340, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a12kw"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(680, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tetly"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1020, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij517"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1360, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk3p1"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1700, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gmnj"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(0, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcoeo"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(340, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ljyp1"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(680, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8q02"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1020, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ean4t"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1360, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bty4d"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1700, 50, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glh61"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(0, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4qcl"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(340, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usxn1"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(680, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyyog"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1020, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4dik"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1360, 759, 340, 709)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3q4w"]
+atlas = ExtResource("2_wu8st")
+region = Rect2(1700, 759, 340, 709)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vidd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu8st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvthg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y47e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5nyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lovs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa8nt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usmig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jsyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a12kw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tetly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ij517")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk3p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gmnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcoeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ljyp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8q02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ean4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bty4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glh61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4qcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usxn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyyog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4dik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3q4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wu8st"]
-radius = 8.0
+radius = 10.049875
 
 [node name="CaveiraTeleguiada" type="Area2D" unique_id=1484042989]
 script = ExtResource("1_50lju")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1948617015]
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_qh2ct")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1700053409]
+position = Vector2(-12, -7.0000005)
+rotation = -1.5707964
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_vidd1")
+autoplay = "default"
+frame_progress = 0.79079795
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=214711432]
 shape = SubResource("CircleShape2D_wu8st")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -45,3 +45,4 @@ text = "Anterior
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1222228366]
 stream = ExtResource("3_vieiy")
 autoplay = true
+bus = &"Music"

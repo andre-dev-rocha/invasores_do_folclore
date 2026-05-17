@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lgkogoccuhkl" path="res://scripts/cordel_fase_4.gd" id="1_xo66a"]
 [ext_resource type="Texture2D" uid="uid://g2wnj1b88fte" path="res://assets/backgrounds/pagina_1_cordel_4.jpeg" id="2_xo66a"]
-[ext_resource type="AudioStream" uid="uid://bs2unnvplcskk" path="res://assets/audio/music/track 3.ogg" id="3_3ggoc"]
+[ext_resource type="AudioStream" uid="uid://c1lmgku70sce5" path="res://assets/audio/music/track 5.ogg" id="3_xo66a"]
 
 [node name="CordelFase4" type="Control" unique_id=63012288]
 layout_mode = 3
@@ -43,5 +43,6 @@ text = "Anterior
 "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1222228366]
-stream = ExtResource("3_3ggoc")
+stream = ExtResource("3_xo66a")
 autoplay = true
+bus = &"Music"

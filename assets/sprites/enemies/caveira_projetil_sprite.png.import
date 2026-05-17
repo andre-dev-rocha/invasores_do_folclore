@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bna7gpqfay2oc"
-path="res://.godot/imported/retrato_bicho_papao.jpeg-cb6b2eb657902438774356a5b99573b3.ctex"
+uid="uid://cvckefkafa41e"
+path="res://.godot/imported/caveira_projetil_sprite.png-cb79c18a5807a8fcc674eb46ebc49394.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemies/retrato_bicho_papao.jpeg"
-dest_files=["res://.godot/imported/retrato_bicho_papao.jpeg-cb6b2eb657902438774356a5b99573b3.ctex"]
+source_file="res://assets/sprites/enemies/caveira_projetil_sprite.png"
+dest_files=["res://.godot/imported/caveira_projetil_sprite.png-cb79c18a5807a8fcc674eb46ebc49394.ctex"]
 
 [params]
 

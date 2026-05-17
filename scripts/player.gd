@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# Pegamos a referência do novo nó
+@onready var anim_sprite = $Sprite2D
+
 @export_group("Movimentação")
 @export var velocidade: float = 400.0
 
@@ -40,6 +43,7 @@ var cena_laser = preload("res://scenes/entities/foguete.tscn")
 # --- FUNÇÃO READY ATUALIZADA ---
 func _ready():
 	add_to_group("player")
+	atualizar_visual_nave()
 	if has_node("Hitbox"):
 		$Hitbox.add_to_group("player")
 	
@@ -154,18 +158,35 @@ func atualizar_hud_escudo():
 		hud.atualizar_barra_escudo(clamp(porcentagem, 0, 100))
 	else:
 		hud.atualizar_barra_escudo(100)
-
+func _piscar_dano():
+	# Agora aplicamos o modulate no AnimatedSprite2D
+	var cor_original = anim_sprite.modulate
+	anim_sprite.modulate = Color(10, 10, 10, 1) 
+	await get_tree().create_timer(0.1).timeout
+	
+	if is_instance_valid(anim_sprite):
+		anim_sprite.modulate = cor_original
+	
 func receber_dano():
 	if escudo_ativo:
 		return
-
 	vidas -= 1
+	atualizar_visual_nave()
+	_piscar_dano()
 	if hud and hud.has_method("atualizar_vidas"):
 		hud.atualizar_vidas(vidas)
 	
 	if vidas <= 0:
 		morrer()
-
+func atualizar_visual_nave():
+	if not is_instance_valid(anim_sprite): 
+		return
+		
+	# Lógica simplificada para apenas dois estados
+	if vidas <= 1:
+		anim_sprite.play("danificada")
+	else:
+		anim_sprite.play("intacta")
 func morrer():
 	$Hitbox.set_deferred("disabled", true) 
 	var explosao = cena_explosao.instantiate()

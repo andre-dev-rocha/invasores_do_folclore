@@ -1,10 +1,10 @@
 extends AnimatedSprite2D
 
 # Configurações da Órbita
-@export var centro_orbita: Vector2 = Vector2(1152, 0) 
-@export var raio_x: float = 1050 # Distância horizontal até o canto esquerdo
-@export var raio_y: float = 600.0 # Distância vertical até o centro-direito
-@export var velocidade: float = 0.007 # Velocidade do movimento
+@export var centro_orbita: Vector2 = Vector2(1152, 100) 
+@export var raio_x: float = 900 # Distância horizontal até o canto esquerdo
+@export var raio_y: float = 450.0 # Distância vertical até o centro-direito
+@export var velocidade: float = 0.010 # Velocidade do movimento
 
 
 var angulo: float = PI 

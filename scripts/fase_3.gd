@@ -6,7 +6,7 @@ var cena_game_over = preload("res://scenes/ui/game_over.tscn")
 @export var total_ondas: int = 5
 
 var game_over_iniciado: bool = false
-var pontuacao: int = 0
+
 var onda_atual: int = 1
 var inimigos_por_onda: int = 2 # Começa com 6 Cucas
 var inimigos_restantes_na_tela: int = 0
@@ -61,9 +61,12 @@ var dialogos = [
 var indice_dialogo = 0
 
 func _ready():
+	Global.salvar_checkpoint_fase()
 	gameplay.process_mode = Node.PROCESS_MODE_DISABLED
 	caixa_dialogo.visible = false
 
+	if hud and hud.has_method("atualizar_pontos"):
+		hud.atualizar_pontos(Global.pontuacao_total)
 	if hud and hud.has_method("atualizar_onda"):
 		hud.atualizar_onda(onda_atual, total_ondas)
 
@@ -80,18 +83,24 @@ func iniciar_game_over():
 	if game_over_iniciado:
 		return
 	game_over_iniciado = true
+	
+	# --- A CORREÇÃO ESTÁ AQUI ---
+	# Avisa ao jogo para pular a intro na próxima vez que a cena carregar
+	Fase3.pular_intro_fase3 = true 
+	
 	if musica_fase:
 		musica_fase.stop()
 	await get_tree().create_timer(2.0).timeout
 	get_tree().paused = true
 	var tela_death = cena_game_over.instantiate()
 	add_child(tela_death)
-
 func adicionar_pontos(quantidade: int):
-	pontuacao += quantidade
+	# Soma diretamente na variável global persistente
+	Global.pontuacao_total += quantidade
+	
+	# Atualiza o HUD com o valor global
 	if hud and hud.has_method("atualizar_pontos"):
-		hud.atualizar_pontos(pontuacao)
-
+		hud.atualizar_pontos(Global.pontuacao_total)
 func animar_texto_fase():
 	var largura_tela = get_viewport_rect().size.x
 	texto_fase.position.x = largura_tela

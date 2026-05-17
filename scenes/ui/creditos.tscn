@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://cw7oev1xk4s4s"]
 
 [ext_resource type="Theme" uid="uid://c2j8udc8wavvt" path="res://assets/fonts/menu_theme.tres" id="1_1rre7"]
-[ext_resource type="Script" uid="uid://d1v1c7r1k0q0x" path="res://scripts/creditos.gd" id="2_credits"]
+[ext_resource type="Script" uid="uid://k5njv7vqil8l" path="res://scripts/creditos.gd" id="2_credits"]
 [ext_resource type="Texture2D" uid="uid://c1e42fjlby0im" path="res://assets/backgrounds/menu_background_2.png" id="3_bg"]
-[ext_resource type="Texture2D" uid="uid://b1j2q3q4q5q6a" path="res://assets/credits/alcivan_lucas.png" id="4_alcivan"]
-[ext_resource type="Texture2D" uid="uid://b1j2q3q4q5q6b" path="res://assets/credits/heitor_viana.png" id="5_heitor"]
-[ext_resource type="Texture2D" uid="uid://b1j2q3q4q5q6c" path="res://assets/credits/enzo_manoel.png" id="6_enzo"]
-[ext_resource type="Texture2D" uid="uid://b1j2q3q4q5q6d" path="res://assets/credits/apollo_lopes.png" id="7_apollo"]
-[ext_resource type="Texture2D" uid="uid://b1j2q3q4q5q6e" path="res://assets/credits/andre_rocha.png" id="8_andre"]
-[ext_resource type="Texture2D" uid="uid://b1j2q3q4q5q6f" path="res://assets/credits/carlos_eugenio.png" id="9_carlos"]
-[ext_resource type="Texture2D" uid="uid://b1j2q3q4q5q6g" path="res://assets/credits/victor_cerqueira.png" id="10_victor"]
+[ext_resource type="Texture2D" uid="uid://ce5cybrbd0m8d" path="res://assets/credits/alcivan_lucas.png" id="4_alcivan"]
+[ext_resource type="Texture2D" uid="uid://bdjxjegq14qnu" path="res://assets/credits/heitor.jpg" id="5_jb4vg"]
+[ext_resource type="Texture2D" uid="uid://wr0xph6m71uo" path="res://assets/credits/enzo_manoel.png" id="6_enzo"]
+[ext_resource type="Texture2D" uid="uid://dt7f8dvehchl7" path="res://assets/credits/apollo_lopes.png" id="7_apollo"]
+[ext_resource type="Texture2D" uid="uid://da18ynkwg4871" path="res://assets/credits/andre_rocha.png" id="8_andre"]
+[ext_resource type="Texture2D" uid="uid://cy4hwhie8gd0f" path="res://assets/credits/carlos_eugenio.png" id="9_carlos"]
+[ext_resource type="Texture2D" uid="uid://vjg44y7pt2kv" path="res://assets/credits/victor_cerqueira.png" id="10_victor"]
+[ext_resource type="AudioStream" uid="uid://ccsabljw32w31" path="res://assets/audio/music/creditos_som.mp3" id="11_a26lr"]
+[ext_resource type="Texture2D" uid="uid://cfyudmicap7v8" path="res://assets/credits/samuel_oliveira.png" id="11_jb4vg"]
 
-[node name="Creditos" type="Control"]
+[node name="Creditos" type="Control" unique_id=1810500957]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,191 +23,225 @@ grow_vertical = 2
 theme = ExtResource("1_1rre7")
 script = ExtResource("2_credits")
 
-[node name="Fundo" type="TextureRect" parent="."]
+[node name="Fundo" type="TextureRect" parent="." unique_id=2096921732]
 layout_mode = 0
 offset_right = 960.0
 offset_bottom = 720.0
 texture = ExtResource("3_bg")
 expand_mode = 1
 
-[node name="CreditsContainer" type="VBoxContainer" parent="."]
+[node name="CreditsContainer" type="VBoxContainer" parent="." unique_id=85178222]
 layout_mode = 0
 offset_left = 160.0
 offset_right = 800.0
 offset_bottom = 2000.0
 theme_override_constants/separation = 32
 
-[node name="EntryAlcivan" type="VBoxContainer" parent="CreditsContainer"]
+[node name="EntryAlcivan" type="VBoxContainer" parent="CreditsContainer" unique_id=268202353]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Nome" type="Label" parent="CreditsContainer/EntryAlcivan"]
+[node name="Nome" type="Label" parent="CreditsContainer/EntryAlcivan" unique_id=600225172]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 26
 text = "Alcivan Lucas"
 
-[node name="Funcao" type="Label" parent="CreditsContainer/EntryAlcivan"]
+[node name="Funcao" type="Label" parent="CreditsContainer/EntryAlcivan" unique_id=1395741765]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Direção de Arte"
 
-[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryAlcivan"]
+[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryAlcivan" unique_id=1396082155]
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(160, 160)
 texture = ExtResource("4_alcivan")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="EntryHeitor" type="VBoxContainer" parent="CreditsContainer"]
+[node name="EntryHeitor" type="VBoxContainer" parent="CreditsContainer" unique_id=1312441607]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Nome" type="Label" parent="CreditsContainer/EntryHeitor"]
+[node name="Nome" type="Label" parent="CreditsContainer/EntryHeitor" unique_id=1655506898]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 26
 text = "Heitor Viana"
 
-[node name="Funcao" type="Label" parent="CreditsContainer/EntryHeitor"]
+[node name="Funcao" type="Label" parent="CreditsContainer/EntryHeitor" unique_id=908252982]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Programação de Gameplay"
 
-[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryHeitor"]
+[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryHeitor" unique_id=357160177]
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(160, 160)
-texture = ExtResource("5_heitor")
+texture = ExtResource("5_jb4vg")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="EntryEnzo" type="VBoxContainer" parent="CreditsContainer"]
+[node name="EntryEnzo" type="VBoxContainer" parent="CreditsContainer" unique_id=1352773051]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Nome" type="Label" parent="CreditsContainer/EntryEnzo"]
+[node name="Nome" type="Label" parent="CreditsContainer/EntryEnzo" unique_id=11463359]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 26
 text = "Enzo Manoel"
 
-[node name="Funcao" type="Label" parent="CreditsContainer/EntryEnzo"]
+[node name="Funcao" type="Label" parent="CreditsContainer/EntryEnzo" unique_id=1676261817]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Design de Níveis"
 
-[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryEnzo"]
+[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryEnzo" unique_id=232429290]
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(160, 160)
 texture = ExtResource("6_enzo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="EntryApollo" type="VBoxContainer" parent="CreditsContainer"]
+[node name="EntryApollo" type="VBoxContainer" parent="CreditsContainer" unique_id=2029702978]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Nome" type="Label" parent="CreditsContainer/EntryApollo"]
+[node name="Nome" type="Label" parent="CreditsContainer/EntryApollo" unique_id=1984904014]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 26
 text = "Apollo Lopes"
 
-[node name="Funcao" type="Label" parent="CreditsContainer/EntryApollo"]
+[node name="Funcao" type="Label" parent="CreditsContainer/EntryApollo" unique_id=2059595333]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Direção de Som"
 
-[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryApollo"]
+[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryApollo" unique_id=2120506013]
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(160, 160)
 texture = ExtResource("7_apollo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="EntryAndre" type="VBoxContainer" parent="CreditsContainer"]
+[node name="EntryAndre" type="VBoxContainer" parent="CreditsContainer" unique_id=1034766120]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Nome" type="Label" parent="CreditsContainer/EntryAndre"]
+[node name="Nome" type="Label" parent="CreditsContainer/EntryAndre" unique_id=1910184634]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 26
 text = "André Rocha"
 
-[node name="Funcao" type="Label" parent="CreditsContainer/EntryAndre"]
+[node name="Funcao" type="Label" parent="CreditsContainer/EntryAndre" unique_id=1688473518]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Produção"
 
-[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryAndre"]
+[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryAndre" unique_id=1632983702]
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(160, 160)
 texture = ExtResource("8_andre")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="EntryCarlos" type="VBoxContainer" parent="CreditsContainer"]
+[node name="EntryCarlos" type="VBoxContainer" parent="CreditsContainer" unique_id=195188472]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Nome" type="Label" parent="CreditsContainer/EntryCarlos"]
+[node name="Nome" type="Label" parent="CreditsContainer/EntryCarlos" unique_id=265480677]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 26
 text = "Carlos Eugenio"
 
-[node name="Funcao" type="Label" parent="CreditsContainer/EntryCarlos"]
+[node name="Funcao" type="Label" parent="CreditsContainer/EntryCarlos" unique_id=768966330]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "QA e Suporte"
 
-[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryCarlos"]
+[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryCarlos" unique_id=289607181]
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(160, 160)
 texture = ExtResource("9_carlos")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="EntryVictor" type="VBoxContainer" parent="CreditsContainer"]
+[node name="EntryVictor" type="VBoxContainer" parent="CreditsContainer" unique_id=1096214476]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Nome" type="Label" parent="CreditsContainer/EntryVictor"]
+[node name="Nome" type="Label" parent="CreditsContainer/EntryVictor" unique_id=1996092456]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 26
 text = "Victor Cerqueira"
 
-[node name="Funcao" type="Label" parent="CreditsContainer/EntryVictor"]
+[node name="Funcao" type="Label" parent="CreditsContainer/EntryVictor" unique_id=847983325]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Arte de VFX"
 
-[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryVictor"]
+[node name="Foto" type="TextureRect" parent="CreditsContainer/EntryVictor" unique_id=291665186]
+custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(160, 160)
 texture = ExtResource("10_victor")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Mensagem" type="Label" parent="CreditsContainer" unique_id=757616105]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Agradecimento:"
+
+[node name="EntrySamuel" type="VBoxContainer" parent="CreditsContainer" unique_id=321387159]
+layout_mode = 2
+
+[node name="Nome" type="Label" parent="CreditsContainer/EntrySamuel" unique_id=2046421343]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Samuel Oliveira"
+
+[node name="Funcao" type="Label" parent="CreditsContainer/EntrySamuel" unique_id=1646879432]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Professor Orientador"
+
+[node name="Foto" type="TextureRect" parent="CreditsContainer/EntrySamuel" unique_id=708881172]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("11_jb4vg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=118135119]
+stream = ExtResource("11_a26lr")
+volume_db = 10.0
+autoplay = true

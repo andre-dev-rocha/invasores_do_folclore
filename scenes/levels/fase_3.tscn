@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://2t7045oo4k7y" path="res://scenes/entities/cuca.tscn" id="7_hdpwe"]
 [ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="8_3c2xc"]
 [ext_resource type="PackedScene" uid="uid://dgjnlwkvka8n5" path="res://scenes/entities/hud.tscn" id="9_1rgmf"]
-[ext_resource type="AudioStream" uid="uid://cpp1bo6lmir" path="res://assets/audio/music/track 4.ogg" id="10_hdpwe"]
+[ext_resource type="AudioStream" uid="uid://cjfhw7awajd07" path="res://assets/audio/music/track 10.ogg" id="10_8ley3"]
 [ext_resource type="PackedScene" uid="uid://b3tebgvojdktk" path="res://scenes/ui/menu_pause.tscn" id="11_0sxkd"]
 [ext_resource type="Texture2D" uid="uid://b2sm8h5lvl5q7" path="res://assets/backgrounds/terra.png" id="12_d5ng1"]
+[ext_resource type="Script" uid="uid://dgbdm6eqjg4tc" path="res://scripts/terra.gd" id="13_8ley3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl7v6"]
 atlas = ExtResource("12_d5ng1")
@@ -2878,7 +2879,7 @@ flip_h = true
 [node name="Gameplay" type="Node2D" parent="." unique_id=2095428379]
 
 [node name="Player" parent="Gameplay" unique_id=563846828 instance=ExtResource("6_ltnir")]
-position = Vector2(455, 670)
+position = Vector2(455, 650)
 scale = Vector2(1, 1)
 
 [node name="TimerSpawn" type="Timer" parent="Gameplay" unique_id=288561657]
@@ -2949,7 +2950,7 @@ expand_mode = 1
 [node name="HUD" parent="." unique_id=1901915659 instance=ExtResource("9_1rgmf")]
 
 [node name="MusicaFase" type="AudioStreamPlayer" parent="." unique_id=2107065284]
-stream = ExtResource("10_hdpwe")
+stream = ExtResource("10_8ley3")
 autoplay = true
 bus = &"Music"
 
@@ -2962,3 +2963,4 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nh7ca")
 autoplay = "default"
 frame_progress = 0.34976026
+script = ExtResource("13_8ley3")

@@ -6,7 +6,7 @@ var cena_vitoria = preload("res://scenes/ui/vitoria.tscn")
 @export var total_ondas: int = 5
 
 var game_over_iniciado: bool = false
-var pontuacao: int = 0
+
 var onda_atual: int = 1
 var inimigos_por_onda: int = 1
 var inimigos_restantes_na_tela: int = 0
@@ -57,11 +57,13 @@ var dialogos = [
 var indice_dialogo = 0
 
 func _ready():
-	Global.salvar_checkpoint_sucata()
+	Global.salvar_checkpoint_fase()
 	# 1. Configurações Iniciais de nós
 	gameplay.process_mode = Node.PROCESS_MODE_DISABLED
 	caixa_dialogo.visible = false
-	
+
+	if hud and hud.has_method("atualizar_pontos"):
+		hud.atualizar_pontos(Global.pontuacao_total)
 	# 2. Inicializa o HUD de ondas
 	if hud and hud.has_method("atualizar_onda"):
 		hud.atualizar_onda(onda_atual, total_ondas)
@@ -97,10 +99,12 @@ func iniciar_game_over():
 	var tela_death = cena_game_over.instantiate()
 	add_child(tela_death)
 func adicionar_pontos(quantidade: int):
-	pontuacao += quantidade
+	
+	Global.pontuacao_total += quantidade
+	
 	if hud and hud.has_method("atualizar_pontos"):
-		hud.atualizar_pontos(pontuacao)
-		
+		hud.atualizar_pontos(Global.pontuacao_total)
+
 func animar_texto_fase():
 	var largura_tela = get_viewport_rect().size.x
 	texto_fase.position.x = largura_tela

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bvftoad82autc" path="res://scripts/loja_upgrades.gd" id="1_xu0yr"]
 [ext_resource type="Texture2D" uid="uid://bfwksg45hobog" path="res://assets/backgrounds/loja_de_upgrades.png" id="2_1cv04"]
 [ext_resource type="Texture2D" uid="uid://klgfnbp3xs8b" path="res://assets/backgrounds/circulo_upgrade.png" id="3_1501r"]
-[ext_resource type="AudioStream" uid="uid://ctkyql3dpa2q1" path="res://assets/audio/music/track 7.ogg" id="4_1cv04"]
+[ext_resource type="AudioStream" uid="uid://d3x2htvojcp45" path="res://assets/audio/music/track 8.ogg" id="4_1cv04"]
 
 [node name="LojaUpgrades" type="Control" unique_id=1673656263]
 layout_mode = 3
@@ -74,6 +74,11 @@ texture = ExtResource("3_1501r")
 layout_mode = 2
 texture = ExtResource("3_1501r")
 
+[node name="DowngradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer" unique_id=1705617695]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = " - "
+
 [node name="UpgradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer" unique_id=881761212]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -111,6 +116,10 @@ texture = ExtResource("3_1501r")
 [node name="C3" type="TextureRect" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer" unique_id=1806846042]
 layout_mode = 2
 texture = ExtResource("3_1501r")
+
+[node name="DowngradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer" unique_id=279781601]
+layout_mode = 2
+text = " - "
 
 [node name="UpgradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer" unique_id=46532437]
 layout_mode = 2
@@ -151,6 +160,10 @@ texture = ExtResource("3_1501r")
 layout_mode = 2
 texture = ExtResource("3_1501r")
 
+[node name="DowngradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer" unique_id=1048789956]
+layout_mode = 2
+text = " - "
+
 [node name="UpgradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer" unique_id=1958497441]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -190,6 +203,10 @@ texture = ExtResource("3_1501r")
 layout_mode = 2
 texture = ExtResource("3_1501r")
 
+[node name="DowngradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer" unique_id=905015397]
+layout_mode = 2
+text = " - "
+
 [node name="UpgradeBtn" type="Button" parent="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer" unique_id=381353532]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -223,8 +240,12 @@ stream = ExtResource("4_1cv04")
 autoplay = true
 bus = &"Music"
 
+[connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer/DowngradeBtn" to="." method="_on_downgrade_cadencia"]
 [connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaCadencia/InfoVBox/HBoxContainer/UpgradeBtn" to="." method="_on_upgrade_cadencia"]
+[connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer/DowngradeBtn" to="." method="_on_downgrade_durabilidade"]
 [connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaDurabilidade/InfoVBox/HBoxContainer/UpgradeBtn" to="." method="_on_upgrade_durabilidade"]
+[connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer/DowngradeBtn" to="." method="_on_downgrade_velocidade"]
 [connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaVelocidade/InfoVBox/HBoxContainer/UpgradeBtn" to="." method="_on_upgrade_velocidade"]
+[connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer/DowngradeBtn" to="." method="_on_downgrade_escudo"]
 [connection signal="pressed" from="MenuLateral/ListaUpgrades/LinhaEscudo/InfoVBox/HBoxContainer/UpgradeBtn" to="." method="_on_upgrade_escudo"]
 [connection signal="pressed" from="BtnIniciarMissao" to="." method="_on_btn_iniciar_missao_pressed"]

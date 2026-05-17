@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dxxy3xxt8oku5" path="res://assets/audio/music/track 6.ogg" id="9_a4omb"]
 [ext_resource type="PackedScene" uid="uid://b3tebgvojdktk" path="res://scenes/ui/menu_pause.tscn" id="9_ghcfq"]
 [ext_resource type="Texture2D" uid="uid://b2sm8h5lvl5q7" path="res://assets/backgrounds/terra.png" id="10_pxt2d"]
+[ext_resource type="Script" uid="uid://dgbdm6eqjg4tc" path="res://scripts/terra.gd" id="13_uymmr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl7v6"]
 atlas = ExtResource("10_pxt2d")
@@ -2877,7 +2878,7 @@ flip_h = true
 [node name="Gameplay" type="Node2D" parent="." unique_id=2095428379]
 
 [node name="Player" parent="Gameplay" unique_id=563846828 instance=ExtResource("6_xapt8")]
-position = Vector2(455, 670)
+position = Vector2(455, 650)
 scale = Vector2(1, 1)
 
 [node name="TimerSpawn" type="Timer" parent="Gameplay" unique_id=288561657]
@@ -2961,3 +2962,4 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nh7ca")
 autoplay = "default"
 frame_progress = 0.34976026
+script = ExtResource("13_uymmr")

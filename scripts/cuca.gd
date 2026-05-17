@@ -4,6 +4,7 @@ extends Area2D
 @export_group("Atributos")
 @export var vidas: int = 3 # Coloquei 5 para ela ser um pouco mais resistente que o Boto
 @export var valor_pontos: int = 300
+var cena_ponto_flutuante = preload("res://scenes/entities/ponto_flutuante.tscn")
 var direcao_movimento: Vector2 = Vector2.DOWN 
 @export var velocidade_cruzeiro: float = 60.0
 
@@ -85,9 +86,23 @@ func morrer():
 	explosao_inst.scale = Vector2(1.5, 1.5) # Uma explosão um pouco maior
 	get_tree().current_scene.call_deferred("add_child", explosao_inst)
 	
+# Adiciona os pontos ao placar geral da fase
 	if get_tree().current_scene.has_method("adicionar_pontos"):
 		get_tree().current_scene.adicionar_pontos(valor_pontos)
 		
+	var popup_pontos = cena_ponto_flutuante.instantiate()
+	popup_pontos.global_position = global_position # Nasce no mesmo lugar do inimigo
+	
+	var label = popup_pontos.get_node_or_null("Label")
+	if label:
+		label.text = str("+ ", valor_pontos)
+	elif popup_pontos is Label:
+		# Caso a raiz da sua cena já seja o próprio Label
+		popup_pontos.text = str(valor_pontos)
+		
+	get_tree().current_scene.call_deferred("add_child", popup_pontos)
+	
+	queue_free() # Destrói o inimigo
 	if randf() < chance_drop_municao:
 		var pack = cena_item_municao.instantiate()
 		pack.global_position = global_position

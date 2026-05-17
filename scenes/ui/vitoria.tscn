@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bx4svqg0fn546" path="res://scripts/vitoria.gd" id="1_1d0ai"]
 [ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="1_6j0kk"]
+[ext_resource type="AudioStream" uid="uid://s8le652pcrkd" path="res://assets/audio/sfx/missao_completada.wav" id="3_shytp"]
 
 [node name="Vitoria" type="CanvasLayer" unique_id=1385049828]
 process_mode = 3
@@ -39,5 +40,11 @@ text = "VITÓRIA! O inimigo foi derrotado!"
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1405726219]
 layout_mode = 2
 text = "Continuar"
+
+[node name="SomVitoria" type="AudioStreamPlayer" parent="." unique_id=890988721]
+stream = ExtResource("3_shytp")
+volume_db = 15.0
+autoplay = true
+bus = &"SFX"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_btn_continuar_pressed"]

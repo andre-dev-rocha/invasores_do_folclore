@@ -3,12 +3,13 @@ class_name Fase5
 
 static var pular_intro_fase5: bool = false
 var cena_game_over = preload("res://scenes/ui/game_over.tscn")
-var cena_boss = preload("res://scenes/entities/bicho_papao.tscn")
 
 var game_over_iniciado: bool = false
-var pontuacao: int = 0
 var estado_fase = "ANIMACAO_TEXTO"
+var cena_ammo = preload("res://scenes/entities/ammo_pack.tscn")
+var timer_ammo: Timer
 
+@onready var barra_vida_boss = $UI/BarraVidaBoss
 @onready var gameplay = $Gameplay
 @onready var ui = $UI
 @onready var hud = $HUD
@@ -19,7 +20,9 @@ var estado_fase = "ANIMACAO_TEXTO"
 @onready var retrato_jogador = $UI/CaixaDialogo/RetratoJogador
 @onready var retrato_inimigo = $UI/CaixaDialogo/RetratoInimigo
 @onready var musica_fase = $MusicaFase
-@onready var canvas_modulate = $CanvasModulate # Essencial para o poder do chefão
+
+# PEGA A REFERÊNCIA DO CHEFE QUE VOCÊ COLOCOU NA CENA
+@onready var boss = $Gameplay/BichoPapao 
 
 # --- DIÁLOGOS DA BATALHA FINAL ---
 var dialogos = [
@@ -31,7 +34,7 @@ var dialogos = [
 	{
 		"nome": "Bicho-Papão",
 		"texto": "[VOZ GUTURAL] Você apagou minhas chamas e dissipou minha névoa... mas não pode fugir da escuridão absoluta.",
-		"imagem": preload("res://assets/sprites/enemies/retrato_bicho_papao.jpeg") # Certifique-se de criar este retrato
+		"imagem": preload("res://assets/sprites/enemies/retrato_bicho_papao.png")
 	},
 	{
 		"nome": "Capitão Zé Galáxia",
@@ -41,7 +44,7 @@ var dialogos = [
 	{
 		"nome": "Bicho-Papão",
 		"texto": "Eu sou o devorador de estrelas! O fim do seu cordel! A luz da sua nave será a próxima a se apagar.",
-		"imagem": preload("res://assets/sprites/enemies/retrato_bicho_papao.jpeg")
+		"imagem": preload("res://assets/sprites/enemies/retrato_bicho_papao.png")
 	},
 	{
 		"nome": "Capitão Zé Galáxia",
@@ -52,13 +55,31 @@ var dialogos = [
 var indice_dialogo = 0
 
 func _ready():
+	Global.salvar_checkpoint_fase()
+	
 	gameplay.process_mode = Node.PROCESS_MODE_DISABLED
 	caixa_dialogo.visible = false
 	
-	# Esconde "Ondas" do HUD, pois é uma luta de chefe único
+	if hud and hud.has_method("atualizar_pontos"):
+		hud.atualizar_pontos(Global.pontuacao_total)
+	# Esconde "Ondas" do HUD
 	if hud and hud.has_node("LabelOnda"):
 		hud.get_node("LabelOnda").visible = false
 
+	# CONECTA O SINAL DO CHEFE JÁ EXISTENTE
+	if boss and boss.has_signal("derrotado"):
+		boss.derrotado.connect(vitoria_final)
+
+	if boss:
+			if boss.has_signal("derrotado") and not boss.derrotado.is_connected(vitoria_final):
+				boss.derrotado.connect(vitoria_final)
+				
+			if boss.has_signal("hp_alterado") and not boss.hp_alterado.is_connected(_atualizar_barra_vida_boss):
+				boss.hp_alterado.connect(_atualizar_barra_vida_boss)
+				
+			# Configura o valor inicial da barra
+			barra_vida_boss.max_value = boss.hp_maximo
+			barra_vida_boss.value = boss.hp_maximo
 	if pular_intro_fase5:
 		pular_intro_fase5 = false
 		texto_fase.visible = false
@@ -72,6 +93,8 @@ func iniciar_game_over():
 	if game_over_iniciado:
 		return
 	game_over_iniciado = true
+	Fase5.pular_intro_fase5 = true 
+	
 	if musica_fase:
 		musica_fase.stop()
 	await get_tree().create_timer(2.0).timeout
@@ -80,16 +103,18 @@ func iniciar_game_over():
 	add_child(tela_death)
 
 func adicionar_pontos(quantidade: int):
-	pontuacao += quantidade
+	# Soma diretamente na variável global persistente
+	Global.pontuacao_total += quantidade
+	
+	# Atualiza o HUD com o valor global
 	if hud and hud.has_method("atualizar_pontos"):
-		hud.atualizar_pontos(pontuacao)
+		hud.atualizar_pontos(Global.pontuacao_total)
 
 func animar_texto_fase():
 	var largura_tela = get_viewport_rect().size.x
 	texto_fase.position.x = largura_tela
 	texto_fase.position.y = get_viewport_rect().size.y / 2.0 - 50
 	var tween = create_tween()
-	# Animação mais dramática para o chefe
 	tween.tween_property(texto_fase, "position:x", (largura_tela / 2.0) - (texto_fase.size.x / 2.0), 2.0).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	tween.tween_interval(2.0)
 	tween.tween_property(texto_fase, "position:x", -texto_fase.size.x - 50, 1.0).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
@@ -122,42 +147,43 @@ func _input(event):
 		else:
 			encerrar_dialogo_e_iniciar_jogo()
 
+func iniciar_spawn_ammo():
+	timer_ammo = Timer.new()
+	timer_ammo.wait_time = 10.0
+	timer_ammo.timeout.connect(spawnar_ammo)
+	add_child(timer_ammo)
+	timer_ammo.start()
+
+func spawnar_ammo():
+	var ammo = cena_ammo.instantiate()
+	ammo.global_position = Vector2(randf_range(60, 900), -40)
+	gameplay.add_child(ammo)
+
 func encerrar_dialogo_e_iniciar_jogo():
 	estado_fase = "JOGANDO"
 	caixa_dialogo.visible = false
+	barra_vida_boss.visible = true
+	# Ao devolver o process_mode, o Bicho-Papão "acorda" automaticamente!
 	gameplay.process_mode = Node.PROCESS_MODE_INHERIT
-	
-	spawnar_bicho_papao()
-
-func spawnar_bicho_papao():
-	var boss = cena_boss.instantiate()
-	
-	# Posiciona o chefe fora da tela para ele descer imponentemente (conforme o script dele)
-	var centro_x = get_viewport_rect().size.x / 2.0
-	boss.global_position = Vector2(centro_x, -200)
-	
-	# Quando o Bicho-Papao for derrotado, o jogo entende que voce venceu.
-	if boss.has_signal("derrotado"):
-		boss.derrotado.connect(vitoria_final)
-	
-	gameplay.add_child(boss)
+	iniciar_spawn_ammo()
 	print("Batalha Final Iniciada!")
 
+func _atualizar_barra_vida_boss(hp_atual: float):
+	if is_instance_valid(barra_vida_boss):
+		# Cria um tween rápido para a barra descer suavemente (efeito visual bacana)
+		var tween = create_tween()
+		tween.tween_property(barra_vida_boss, "value", hp_atual, 0.2).set_trans(Tween.TRANS_SINE)
+		
 func vitoria_final():
 	if not is_inside_tree():
 		return
 	if game_over_iniciado: 
-		return # Previne chamar vitória se o jogador morrer junto com o chefe
+		return 
 	if estado_fase == "VITORIA":
 		return
-
-	estado_fase = "VITORIA"
 	
-	# Restaura a luz caso o jogador tenha matado o chefe durante o Breu Absoluto
-	if canvas_modulate:
-		canvas_modulate.color = Color(1, 1, 1, 1)
-		
-	# Toca uma música de vitória se houver
+	estado_fase = "VITORIA"
+	barra_vida_boss.visible = false
 	if musica_fase:
 		musica_fase.stop()
 		
@@ -167,6 +193,5 @@ func vitoria_final():
 		return
 	get_tree().paused = true
 	
-	# Carrega a tela de ZERAMENTO do jogo
 	var tela_creditos = preload("res://scenes/ui/creditos.tscn").instantiate()
 	add_child(tela_creditos)
