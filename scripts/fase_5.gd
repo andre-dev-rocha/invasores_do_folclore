@@ -175,23 +175,27 @@ func _atualizar_barra_vida_boss(hp_atual: float):
 		tween.tween_property(barra_vida_boss, "value", hp_atual, 0.2).set_trans(Tween.TRANS_SINE)
 		
 func vitoria_final():
-	if not is_inside_tree():
-		return
-	if game_over_iniciado: 
-		return 
-	if estado_fase == "VITORIA":
-		return
-	
+	if not is_inside_tree(): return
+	if game_over_iniciado: return 
+	if estado_fase == "VITORIA": return
+
 	estado_fase = "VITORIA"
-	barra_vida_boss.visible = false
+	if barra_vida_boss:
+		barra_vida_boss.visible = false
+	
 	if musica_fase:
 		musica_fase.stop()
 		
+	# Finaliza a contagem de tempo do jogo
+	Global.finalizar_jogo()
+		
 	var timer = get_tree().create_timer(3.0)
 	await timer.timeout
-	if not is_inside_tree():
-		return
-	get_tree().paused = true
 	
-	var tela_creditos = preload("res://scenes/ui/creditos.tscn").instantiate()
-	add_child(tela_creditos)
+	if not is_inside_tree(): return
+	
+	# IMPORTANTE: Despausar antes de mudar de cena para os botões funcionarem depois
+	get_tree().paused = false 
+	
+	# MUDA DE CENA EM VEZ DE SOBREPOR
+	get_tree().change_scene_to_file("res://scenes/ui/tela_estatisticas_final.tscn")

@@ -101,7 +101,7 @@ func morrer():
 		popup_pontos.text = str(valor_pontos)
 		
 	get_tree().current_scene.call_deferred("add_child", popup_pontos)
-	
+	Global.registrar_morte_inimigo("Cuca")
 	queue_free() # Destrói o inimigo
 	if randf() < chance_drop_municao:
 		var pack = cena_item_municao.instantiate()

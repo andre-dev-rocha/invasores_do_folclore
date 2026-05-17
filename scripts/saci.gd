@@ -82,4 +82,5 @@ func morrer():
 		var scrap = cena_sucata.instantiate()
 		scrap.global_position = global_position
 		get_tree().current_scene.call_deferred("add_child", scrap)
+	Global.registrar_morte_inimigo("Saci")
 	queue_free()

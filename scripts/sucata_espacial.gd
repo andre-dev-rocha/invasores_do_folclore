@@ -16,6 +16,7 @@ func _on_area_entered(area):
 	if area.is_in_group("player") or area.get_parent().is_in_group("player"):
 		# SOMA NO GLOBAL
 		Global.total_sucatas += 5
+		Global.sucatas_totais_coletadas += 5
 		print("Sucata coletada! Total no inventário: ", Global.total_sucatas)
 		var hud = get_tree().current_scene.find_child("HUD")
 		if hud and hud.has_method("atualizar_sucata"):

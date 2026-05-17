@@ -2875,7 +2875,7 @@ scale = Vector2(0.9998264, 2.0166667)
 texture = ExtResource("5_1oivd")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/CamadaSombras" unique_id=1569367990]
-modulate = Color(1.5357896, 0.06745762, 0.031524323, 0.8235294)
+modulate = Color(1.5720325, 0, 0, 0.8235294)
 position = Vector2(5760, 360)
 scale = Vector2(1, 2)
 texture = ExtResource("5_1oivd")

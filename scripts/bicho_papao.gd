@@ -10,7 +10,7 @@ signal hp_alterado(hp_atual, hp_maximo)
 @onready var som_granada = $SomGranada
 
 @export_group("Atributos do Chefe")
-@export var hp_maximo: float = 8000.0
+@export var hp_maximo: float = 100.0 # 8000
 @export var valor_pontos: int = 50000
 
 @export_group("Ciclo de Habilidades")
@@ -354,7 +354,7 @@ func _morrer():
 		explosao.global_position = global_position
 		explosao.scale = Vector2(4.0, 4.0)
 		parent.call_deferred("add_child", explosao)
-
+	Global.registrar_morte_inimigo("BichoPapao")
 	derrotado.emit()
 	queue_free()
 

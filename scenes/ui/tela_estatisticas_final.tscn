@@ -1,0 +1,331 @@
+[gd_scene format=3 uid="uid://dowkkbmmsocg7"]
+
+[ext_resource type="Script" uid="uid://beouqyguc7o4o" path="res://scripts/tela_estatisticas_final.gd" id="1_h71lk"]
+[ext_resource type="Texture2D" uid="uid://n1y4bs5kdsmx" path="res://assets/backgrounds/cordel.png" id="2_kovfb"]
+[ext_resource type="FontFile" uid="uid://b6w24gc2hw8fe" path="res://assets/fonts/PressStart2P.ttf" id="3_bna26"]
+[ext_resource type="Texture2D" uid="uid://bhwix2g15wywg" path="res://assets/backgrounds/pontuacao_icone_final.png" id="4_jtef7"]
+[ext_resource type="Texture2D" uid="uid://diwjphv1vrtdf" path="res://assets/backgrounds/tempo_icone.png" id="5_kqwv3"]
+[ext_resource type="Texture2D" uid="uid://dfwsnwcq7364q" path="res://assets/backgrounds/vida_icone.png" id="6_7yypx"]
+[ext_resource type="Texture2D" uid="uid://c2knci25x1bvj" path="res://assets/backgrounds/precisao_icone.png" id="7_ocgp0"]
+[ext_resource type="Texture2D" uid="uid://dduxi7rcu40bd" path="res://assets/backgrounds/sucata_icone_final.png" id="8_awibp"]
+[ext_resource type="Texture2D" uid="uid://cdpivlwhngj8t" path="res://assets/backgrounds/melhorias_icone_final.png" id="9_rvfh8"]
+[ext_resource type="Texture2D" uid="uid://6hb0d5ivnnlp" path="res://assets/backgrounds/saci.icone_final.png" id="10_jbdsb"]
+[ext_resource type="Texture2D" uid="uid://b2iksaqa382ac" path="res://assets/backgrounds/boto_icone_final.png" id="11_62enk"]
+[ext_resource type="Texture2D" uid="uid://dstc6uewkqtti" path="res://assets/backgrounds/cuca_icone_final.png" id="12_hlbn3"]
+[ext_resource type="Texture2D" uid="uid://setnkktr3xnr" path="res://assets/backgrounds/mula_icone_final.png" id="13_4wllc"]
+[ext_resource type="Texture2D" uid="uid://xu8rg8d6h2da" path="res://assets/backgrounds/bichopapao_icone_final.png" id="14_hti4k"]
+
+[node name="TelaEstatisticasFinal" type="Control" unique_id=1719459153]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h71lk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1478585832]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kovfb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=333438950]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 26.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_bna26")
+theme_override_font_sizes/font_size = 25
+text = "RELATÓRIO FINAL DA MISSÃO"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2005303271]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.119
+anchor_top = 0.164
+anchor_right = 0.43600002
+anchor_bottom = 0.78300005
+offset_left = -0.2400055
+offset_top = -0.08000183
+offset_right = 0.43997192
+offset_bottom = 0.23999023
+theme_override_constants/separation = 30
+
+[node name="LinhaPontos" type="HBoxContainer" parent="VBoxContainer" unique_id=1179562956]
+layout_mode = 2
+
+[node name="IconePontuacao" type="TextureRect" parent="VBoxContainer/LinhaPontos" unique_id=791343175]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("4_jtef7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/LinhaPontos" unique_id=841404298]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Pontuação:  "
+
+[node name="Valor" type="Label" parent="VBoxContainer/LinhaPontos" unique_id=593842677]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="LinhaTempo" type="HBoxContainer" parent="VBoxContainer" unique_id=1805974184]
+layout_mode = 2
+
+[node name="IconeRelogio" type="TextureRect" parent="VBoxContainer/LinhaTempo" unique_id=1530329269]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_kqwv3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/LinhaTempo" unique_id=2065791166]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Tempo de Jogo: "
+
+[node name="Valor" type="Label" parent="VBoxContainer/LinhaTempo" unique_id=700788755]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="LinhaVidas" type="HBoxContainer" parent="VBoxContainer" unique_id=1528606181]
+layout_mode = 2
+
+[node name="IconeVidas" type="TextureRect" parent="VBoxContainer/LinhaVidas" unique_id=1165112576]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_7yypx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/LinhaVidas" unique_id=888766993]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Vidas Perdidas: "
+
+[node name="Valor" type="Label" parent="VBoxContainer/LinhaVidas" unique_id=1540459705]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="LinhaPrecisao" type="HBoxContainer" parent="VBoxContainer" unique_id=1103556160]
+layout_mode = 2
+
+[node name="IconePrecisao" type="TextureRect" parent="VBoxContainer/LinhaPrecisao" unique_id=1104271552]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_ocgp0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/LinhaPrecisao" unique_id=1701810672]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Precisão: "
+
+[node name="Valor" type="Label" parent="VBoxContainer/LinhaPrecisao" unique_id=1665466229]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="LinhaSucatas" type="HBoxContainer" parent="VBoxContainer" unique_id=2015614845]
+layout_mode = 2
+
+[node name="IconeSucatas" type="TextureRect" parent="VBoxContainer/LinhaSucatas" unique_id=37203773]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_awibp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/LinhaSucatas" unique_id=1076638268]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Sucatas: "
+
+[node name="Valor" type="Label" parent="VBoxContainer/LinhaSucatas" unique_id=1689450734]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="LinhaMelhorias" type="HBoxContainer" parent="VBoxContainer" unique_id=497870455]
+layout_mode = 2
+
+[node name="IconeMelhorias" type="TextureRect" parent="VBoxContainer/LinhaMelhorias" unique_id=43751720]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("9_rvfh8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/LinhaMelhorias" unique_id=904489384]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Melhorias: "
+
+[node name="Valor" type="Label" parent="VBoxContainer/LinhaMelhorias" unique_id=1952161085]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1983586105]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 124.0
+offset_right = 827.0
+offset_bottom = 570.0
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2" unique_id=2083351342]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer" unique_id=2068798569]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = "Naves Derrotadas:"
+
+[node name="LinhaSaci" type="HBoxContainer" parent="VBoxContainer2" unique_id=98178299]
+layout_mode = 2
+
+[node name="IconeSaci" type="TextureRect" parent="VBoxContainer2/LinhaSaci" unique_id=713137181]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("10_jbdsb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer2/LinhaSaci" unique_id=522865271]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Saci: "
+
+[node name="Valor" type="Label" parent="VBoxContainer2/LinhaSaci" unique_id=878672429]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="LinhaBoto" type="HBoxContainer" parent="VBoxContainer2" unique_id=799663343]
+layout_mode = 2
+
+[node name="IconeSaci2" type="TextureRect" parent="VBoxContainer2/LinhaBoto" unique_id=1825514426]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("11_62enk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer2/LinhaBoto" unique_id=461585828]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Boto: "
+
+[node name="Valor" type="Label" parent="VBoxContainer2/LinhaBoto" unique_id=1834539711]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="LinhaCuca" type="HBoxContainer" parent="VBoxContainer2" unique_id=1135702229]
+layout_mode = 2
+
+[node name="IconeSaci3" type="TextureRect" parent="VBoxContainer2/LinhaCuca" unique_id=765735226]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("12_hlbn3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer2/LinhaCuca" unique_id=2007734782]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Cuca: "
+
+[node name="Valor" type="Label" parent="VBoxContainer2/LinhaCuca" unique_id=481162165]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="LinhaMula" type="HBoxContainer" parent="VBoxContainer2" unique_id=204414887]
+layout_mode = 2
+
+[node name="IconeSaci4" type="TextureRect" parent="VBoxContainer2/LinhaMula" unique_id=1296576867]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("13_4wllc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer2/LinhaMula" unique_id=2086889732]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Mula: "
+
+[node name="Valor" type="Label" parent="VBoxContainer2/LinhaMula" unique_id=1563418875]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="LinhaPapao" type="HBoxContainer" parent="VBoxContainer2" unique_id=1919288867]
+layout_mode = 2
+
+[node name="IconeSaci5" type="TextureRect" parent="VBoxContainer2/LinhaPapao" unique_id=421625245]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("14_hti4k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer2/LinhaPapao" unique_id=47809525]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bna26")
+text = " Bicho Papão: "
+
+[node name="Valor" type="Label" parent="VBoxContainer2/LinhaPapao" unique_id=1491393383]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="BotoesRodape" type="HBoxContainer" parent="." unique_id=1742457382]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -434.0
+offset_top = -168.0
+offset_right = -104.0
+offset_bottom = -132.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="BtnCreditos" type="Button" parent="BotoesRodape" unique_id=1201216133]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Ver Créditos
+"
+
+[node name="BtnMenu" type="Button" parent="BotoesRodape" unique_id=341032580]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Menu Principal"

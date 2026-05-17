@@ -40,25 +40,20 @@ var suavidade_volume: float = 5.0
 var cena_explosao = preload("res://scenes/entities/explosao.tscn")
 var cena_laser = preload("res://scenes/entities/foguete.tscn")
 
-# --- FUNÇÃO READY ATUALIZADA ---
 func _ready():
 	add_to_group("player")
 	atualizar_visual_nave()
 	if has_node("Hitbox"):
 		$Hitbox.add_to_group("player")
 	
-	# 1. CARREGA OS UPGRADES DA OFICINA (SINGLETON GLOBAL)
-	# Isso sobrescreve os valores padrão pelos valores melhorados
 	velocidade = Global.get_velocidade()
 	vidas = Global.get_vidas()
 	cadencia_disparo = Global.get_cadencia()
 	duracao_escudo = Global.get_duracao_escudo()
 	
-	# 2. DEBUG PARA CONSOLE
 	print("--- ZÉ GALÁXIA TURBINADO ---")
 	print("Vidas: ", vidas, " | Vel: ", velocidade, " | Cadência: ", cadencia_disparo)
 	
-	# 3. SINCRONIZA O HUD COM OS NOVOS VALORES
 	if hud:
 		await get_tree().process_frame
 		if hud.has_method("atualizar_vidas"):
@@ -79,10 +74,10 @@ func _physics_process(_delta):
 	
 	if direcao != Vector2.ZERO:
 		velocity = direcao * velocidade
-		som_motor.volume_db = lerp(som_motor.volume_db, volume_movimento, suavidade_volume * _delta)
+		if som_motor: som_motor.volume_db = lerp(som_motor.volume_db, volume_movimento, suavidade_volume * _delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, velocidade)
-		som_motor.volume_db = lerp(som_motor.volume_db, volume_idle, suavidade_volume * _delta)
+		if som_motor: som_motor.volume_db = lerp(som_motor.volume_db, volume_idle, suavidade_volume * _delta)
 	
 	move_and_slide()
 	limitar_na_tela()
@@ -97,6 +92,7 @@ func atirar():
 		
 	pode_atirar = false 
 	municao_atual -= 1
+	Global.registrar_tiro_disparado() # <-- O SEU JÁ ESTAVA CERTO AQUI!
 	
 	if hud and hud.has_method("atualizar_municao"):
 		hud.atualizar_municao(municao_atual)
@@ -109,7 +105,6 @@ func atirar():
 	if som_foguete:
 		som_foguete.play()
 	
-	# Usa a cadência vinda do Global
 	await get_tree().create_timer(cadencia_disparo).timeout
 	pode_atirar = true
 
@@ -130,7 +125,6 @@ func iniciar_ciclo_escudo():
 	anim_escudo.frame = 0 
 	anim_escudo.play("default") 
 	
-	# Usa a duração vinda do Global
 	await get_tree().create_timer(duracao_escudo).timeout
 	
 	escudo_ativo = false
@@ -158,8 +152,8 @@ func atualizar_hud_escudo():
 		hud.atualizar_barra_escudo(clamp(porcentagem, 0, 100))
 	else:
 		hud.atualizar_barra_escudo(100)
+
 func _piscar_dano():
-	# Agora aplicamos o modulate no AnimatedSprite2D
 	var cor_original = anim_sprite.modulate
 	anim_sprite.modulate = Color(10, 10, 10, 1) 
 	await get_tree().create_timer(0.1).timeout
@@ -171,6 +165,7 @@ func receber_dano():
 	if escudo_ativo:
 		return
 	vidas -= 1
+	Global.registrar_vida_perdida()
 	atualizar_visual_nave()
 	_piscar_dano()
 	if hud and hud.has_method("atualizar_vidas"):
@@ -178,17 +173,20 @@ func receber_dano():
 	
 	if vidas <= 0:
 		morrer()
+
 func atualizar_visual_nave():
 	if not is_instance_valid(anim_sprite): 
 		return
 		
-	# Lógica simplificada para apenas dois estados
 	if vidas <= 1:
 		anim_sprite.play("danificada")
 	else:
 		anim_sprite.play("intacta")
+
 func morrer():
-	$Hitbox.set_deferred("disabled", true) 
+	if has_node("Hitbox"):
+		$Hitbox.set_deferred("disabled", true) 
+		
 	var explosao = cena_explosao.instantiate()
 	explosao.global_position = global_position
 	get_tree().current_scene.add_child(explosao)
