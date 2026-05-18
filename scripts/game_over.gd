@@ -23,7 +23,6 @@ func _on_btn_tentar_novamente_pressed():
 	elif cena_atual is Fase4:
 		Fase4.pular_intro_fase4 = true
 		
-	Global.restaurar_checkpoint_sucata()
 	Global.restaurar_checkpoint_fase()
 	get_tree().reload_current_scene()
 

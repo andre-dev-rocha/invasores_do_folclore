@@ -7,7 +7,7 @@ var cena_game_over = preload("res://scenes/ui/game_over.tscn")
 var game_over_iniciado: bool = false
 
 var onda_atual: int = 1
-var inimigos_por_onda: int = 3
+var inimigos_por_onda: int = 2
 var inimigos_restantes_na_tela: int = 0
 var inimigos_spawnados_na_onda: int = 0
 
@@ -202,7 +202,7 @@ func preparar_proxima_onda():
 
 	if onda_atual < total_ondas:
 		onda_atual += 1
-		inimigos_por_onda += 2
+		inimigos_por_onda += 1
 		inimigos_spawnados_na_onda = 0
 
 		if hud and hud.has_method("atualizar_onda"):
@@ -217,7 +217,7 @@ func preparar_proxima_onda():
 
 func vitoria():
 	Fase4.pular_intro_fase4 = false
-	Vitoria.proxima_cena = "res://scenes/levels/fase_5.tscn"
+	Vitoria.proxima_cena = "res://scenes/ui/loja_upgrades.tscn"
 	await get_tree().create_timer(2.0).timeout
 	estado_fase = "VITORIA"
 	get_tree().paused = true

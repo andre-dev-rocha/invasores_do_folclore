@@ -8,7 +8,7 @@ var cena_game_over = preload("res://scenes/ui/game_over.tscn")
 var game_over_iniciado: bool = false
 
 var onda_atual: int = 1
-var inimigos_por_onda: int = 2 # Começa com 6 Cucas
+var inimigos_por_onda: int = 2
 var inimigos_restantes_na_tela: int = 0
 var inimigos_spawnados_na_onda: int = 0
 
@@ -197,7 +197,7 @@ func preparar_proxima_onda():
 
 	if onda_atual < total_ondas:
 		onda_atual += 1
-		inimigos_por_onda += 2 # Aumenta a dificuldade a cada onda
+		inimigos_por_onda += 1 
 		inimigos_spawnados_na_onda = 0
 
 		if hud and hud.has_method("atualizar_onda"):

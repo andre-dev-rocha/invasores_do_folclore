@@ -23,6 +23,7 @@ var vidas = 3
 var escudo_disponivel = true
 var escudo_ativo = false
 var tempo_inicio_cooldown = 0.0
+var piscando_dano: bool = false
 
 # Referências de Áudio e Volume
 @onready var som_motor = $SomMotor
@@ -154,12 +155,20 @@ func atualizar_hud_escudo():
 		hud.atualizar_barra_escudo(100)
 
 func _piscar_dano():
-	var cor_original = anim_sprite.modulate
+	# Se já estiver piscando, não tenta piscar de novo por cima
+	if piscando_dano:
+		return
+		
+	piscando_dano = true
+	
+	# Usamos Color.WHITE para garantir que sempre volte ao normal, sem depender do estado anterior
 	anim_sprite.modulate = Color(10, 10, 10, 1) 
 	await get_tree().create_timer(0.1).timeout
 	
 	if is_instance_valid(anim_sprite):
-		anim_sprite.modulate = cor_original
+		anim_sprite.modulate = Color.WHITE # Retorna para o normal 100% das vezes
+		
+	piscando_dano = false
 	
 func receber_dano():
 	if escudo_ativo:

@@ -2,7 +2,7 @@ extends Area2D
 
 # --- CONFIGURAÇÕES EXPORTADAS ---
 @export_group("Atributos")
-@export var vidas: int = 3
+@export var vidas: int = 6
 @export var valor_pontos: int = 250
 var direcao_movimento: Vector2 = Vector2.DOWN
 var cena_ponto_flutuante = preload("res://scenes/entities/ponto_flutuante.tscn")
@@ -14,7 +14,7 @@ var cena_ponto_flutuante = preload("res://scenes/entities/ponto_flutuante.tscn")
 @export var frequencia: float = 1.0
 
 @export_group("Drops")
-@export var chance_drop_municao: float = 0.7 
+@export var chance_drop_municao: float = 0.35 
 @export var chance_drop_sucata_boto: float = 0.7 
 
 # --- REFERÊNCIAS DE CENA ---

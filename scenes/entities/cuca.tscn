@@ -270,7 +270,7 @@ rect = Rect2(-264, -211, 530, 403)
 
 [node name="TimerTiro" type="Timer" parent="." unique_id=64217677]
 unique_name_in_owner = true
-wait_time = 3.5
+wait_time = 2.8
 autostart = true
 
 [node name="SomTiro" type="AudioStreamPlayer2D" parent="." unique_id=269197580]

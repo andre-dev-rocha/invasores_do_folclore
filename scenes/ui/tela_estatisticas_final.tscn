@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dstc6uewkqtti" path="res://assets/backgrounds/cuca_icone_final.png" id="12_hlbn3"]
 [ext_resource type="Texture2D" uid="uid://setnkktr3xnr" path="res://assets/backgrounds/mula_icone_final.png" id="13_4wllc"]
 [ext_resource type="Texture2D" uid="uid://xu8rg8d6h2da" path="res://assets/backgrounds/bichopapao_icone_final.png" id="14_hti4k"]
+[ext_resource type="AudioStream" uid="uid://d3x2htvojcp45" path="res://assets/audio/music/track 8.ogg" id="15_kqwv3"]
 
 [node name="TelaEstatisticasFinal" type="Control" unique_id=1719459153]
 process_mode = 3
@@ -329,3 +330,7 @@ text = "Ver Créditos
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Menu Principal"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1368774069]
+stream = ExtResource("15_kqwv3")
+autoplay = true

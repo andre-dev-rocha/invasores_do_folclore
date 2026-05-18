@@ -1,9 +1,10 @@
 extends Area2D
 
-# --- CONFIGURAÇÕES EXPORTADAS ---
+
 @export_group("Atributos")
-@export var vidas: int = 3 # Coloquei 5 para ela ser um pouco mais resistente que o Boto
+@export var vidas: int = 4 
 @export var valor_pontos: int = 300
+
 var cena_ponto_flutuante = preload("res://scenes/entities/ponto_flutuante.tscn")
 var direcao_movimento: Vector2 = Vector2.DOWN 
 @export var velocidade_cruzeiro: float = 60.0
@@ -14,7 +15,7 @@ var direcao_movimento: Vector2 = Vector2.DOWN
 
 @export_group("Drops")
 @export var chance_drop_municao: float = 0.5 
-@export var chance_drop_sucata_cuca: float = 0.8 
+@export var chance_drop_sucata_cuca: float = 0.7 
 
 # --- REFERÊNCIAS ---
 var cena_item_municao = preload("res://scenes/entities/ammo_pack.tscn")
@@ -110,7 +111,7 @@ func morrer():
 		
 	if randf() < chance_drop_sucata_cuca:
 		# A Cuca é um inimigo mais forte, então pode dropar mais sucata
-		for i in range(3): 
+		for i in range(2): 
 			var scrap = cena_sucata.instantiate()
 			scrap.global_position = global_position + Vector2(randf_range(-25, 25), randf_range(-25, 25))
 			get_tree().current_scene.call_deferred("add_child", scrap)

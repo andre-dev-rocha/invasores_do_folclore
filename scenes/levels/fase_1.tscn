@@ -2898,7 +2898,7 @@ position = Vector2(455, 650)
 scale = Vector2(1, 1)
 
 [node name="TimerSpawn" type="Timer" parent="Gameplay" unique_id=288561657]
-wait_time = 2.0
+wait_time = 1.5
 
 [node name="Saci" parent="Gameplay" unique_id=1285912239 instance=ExtResource("7_7wwkh")]
 position = Vector2(449, 83)
@@ -2939,9 +2939,9 @@ offset_bottom = 27.0
 
 [node name="TextoFala" type="Label" parent="UI/CaixaDialogo" unique_id=985682164]
 layout_mode = 0
-offset_left = 28.0
+offset_left = 29.0
 offset_top = 40.0
-offset_right = 878.0
+offset_right = 879.0
 offset_bottom = 180.0
 autowrap_mode = 2
 

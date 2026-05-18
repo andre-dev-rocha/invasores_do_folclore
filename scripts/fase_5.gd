@@ -149,7 +149,7 @@ func _input(event):
 
 func iniciar_spawn_ammo():
 	timer_ammo = Timer.new()
-	timer_ammo.wait_time = 10.0
+	timer_ammo.wait_time = 5.0
 	timer_ammo.timeout.connect(spawnar_ammo)
 	add_child(timer_ammo)
 	timer_ammo.start()
@@ -198,4 +198,4 @@ func vitoria_final():
 	get_tree().paused = false 
 	
 	# MUDA DE CENA EM VEZ DE SOBREPOR
-	get_tree().change_scene_to_file("res://scenes/ui/tela_estatisticas_final.tscn")
+	get_tree().change_scene_to_file("res://scenes/ui/cordel_fase_6.tscn")

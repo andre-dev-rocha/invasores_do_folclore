@@ -10,7 +10,7 @@ signal hp_alterado(hp_atual, hp_maximo)
 @onready var som_granada = $SomGranada
 
 @export_group("Atributos do Chefe")
-@export var hp_maximo: float = 100.0 # 8000
+@export var hp_maximo: float = 8000.0 # 8000
 @export var valor_pontos: int = 50000
 
 @export_group("Ciclo de Habilidades")
@@ -46,6 +46,7 @@ var indice_habilidade: int = 0
 var jogador_ref: Node2D = null
 var morreu: bool = false
 var tempo_para_dano_laser: float = 0.0
+var piscando_dano: bool = false
 
 # Variáveis para o Bombardeio
 var direcao_movimento: int = 1
@@ -317,21 +318,30 @@ func _on_area_entered(area):
 		_receber_dano(25.0) # Assumindo 25 de dano por tiro
 		area.queue_free()
 
+
 func _receber_dano(dano: float):
 	if morreu: return
 	hp_atual -= dano
-
-	hp_alterado.emit(hp_atual)
 	
+	if has_user_signal("hp_alterado") or has_signal("hp_alterado"):
+		hp_alterado.emit(hp_atual)
+
 	if hp_atual <= 0.0:
 		_morrer()
 		return
 
-	var cor_original = modulate
-	modulate = Color(10.0, 10.0, 10.0)
-	await get_tree().create_timer(0.05).timeout
-	if not morreu and is_inside_tree():
-		modulate = cor_original
+	if not piscando_dano:
+		piscando_dano = true
+		
+		var cor_salva = modulate 
+		modulate = Color(10.0, 10.0, 10.0)
+		
+		await get_tree().create_timer(0.05).timeout
+		
+		if not morreu and is_inside_tree():
+			modulate = cor_salva
+			
+		piscando_dano = false
 
 func _morrer():
 	if morreu: return

@@ -3,12 +3,13 @@ class_name Fase2
 static var pular_intro_fase2: bool = false
 var cena_game_over = preload("res://scenes/ui/game_over.tscn")
 var cena_vitoria = preload("res://scenes/ui/vitoria.tscn")
+var cena_ammo = preload("res://scenes/entities/ammo_pack.tscn")
 @export var total_ondas: int = 5
 
 var game_over_iniciado: bool = false
-
+var timer_ammo: Timer
 var onda_atual: int = 1
-var inimigos_por_onda: int = 1
+var inimigos_por_onda: int = 2
 var inimigos_restantes_na_tela: int = 0
 var inimigos_spawnados_na_onda: int = 0
 
@@ -151,7 +152,7 @@ func encerrar_dialogo_e_iniciar_jogo():
 	gameplay.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	timer_spawn.start()
-	
+	iniciar_spawn_ammo()
 	print("Gameplay Iniciado!")
 
 # --- LÓGICA DO SISTEMA DE ONDAS ADAPTADA ---
@@ -162,6 +163,19 @@ func _on_timer_spawn_timeout():
 	else:
 		timer_spawn.stop()
 
+
+func iniciar_spawn_ammo():
+	timer_ammo = Timer.new()
+	timer_ammo.wait_time = 10.0
+	timer_ammo.timeout.connect(spawnar_ammo)
+	add_child(timer_ammo)
+	timer_ammo.start()
+
+func spawnar_ammo():
+	var ammo = cena_ammo.instantiate()
+	ammo.global_position = Vector2(randf_range(60, 900), -40)
+	gameplay.add_child(ammo)
+	
 func spawnar_boto():
 	var boto = cena_boto.instantiate()
 	var largura_tela = 960
@@ -209,7 +223,7 @@ func preparar_proxima_onda():
 
 	if onda_atual < total_ondas:
 		onda_atual += 1
-		inimigos_por_onda += 2 # Adiciona 2 boto a cada onda
+		inimigos_por_onda += 1 # Adiciona 1 boto a cada onda
 		inimigos_spawnados_na_onda = 1
 		
 		if hud and hud.has_method("atualizar_onda"):

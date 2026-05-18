@@ -1,7 +1,7 @@
 extends Area2D
 
 @export_group("Atributos")
-@export var vidas: int = 4
+@export var vidas: int = 7
 @export var valor_pontos: int = 400
 
 @export_group("Galope Cósmico")
@@ -9,7 +9,7 @@ extends Area2D
 @export var amplitude_galope: float = 15.0
 @export var frequencia_galope: float = 5.0
 
-@export var chance_drop_municao: float = 0.4 
+@export var chance_drop_municao: float = 0.2 
 @export var chance_drop_sucata_mula: float = 0.7
 var direcao_movimento: Vector2 = Vector2.RIGHT
 var tempo_decorrido: float = 0.0

@@ -2890,7 +2890,7 @@ position = Vector2(455, 650)
 scale = Vector2(1, 1)
 
 [node name="TimerSpawn" type="Timer" parent="Gameplay" unique_id=200013000]
-wait_time = 2.5
+wait_time = 1.5
 
 [node name="MulaSemCabeca" parent="Gameplay" unique_id=100001000 instance=ExtResource("8_88k5w")]
 position = Vector2(500, 150)
