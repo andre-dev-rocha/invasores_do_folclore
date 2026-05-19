@@ -71,7 +71,7 @@ func _process(_delta):
 		atirar()
 
 func _physics_process(_delta):
-	var direcao = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direcao = Input.get_vector("mover_esquerda", "mover_direita", "mover_cima", "mover_baixo")
 	
 	if direcao != Vector2.ZERO:
 		velocity = direcao * velocidade
